@@ -1,0 +1,32 @@
+@media  screen and (max-width: 768px) {
+
+  #nav-desktop {display: none;}
+  #nav-mobile {display: block;}
+  .nav-desktop{display: none;}
+
+  .slide_img{height: 190px !important;}
+  .content{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding: 5px !important;
+  }
+  .container-m {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+
+  }
+
+  .article-content {
+    white-space: nowrap !important;
+    width: 200px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+  }
+  
+  .elm-logo{
+    width: 50px;
+  }
+
+
+}

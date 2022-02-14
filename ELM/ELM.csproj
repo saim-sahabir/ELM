@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-ELM-C9678606-64EF-470F-9C1E-23E234D90B06</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
+        <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ELM.Expenses\ELM.Expenses.csproj" />
+      <ProjectReference Include="..\ELM.Users\ELM.Users.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Areas\Profile\Controllers" />
+      <Folder Include="Areas\Profile\Data" />
+      <Folder Include="Areas\Profile\Models" />
+      <Folder Include="Areas\Profile\Views" />
+    </ItemGroup>
+
+</Project>
