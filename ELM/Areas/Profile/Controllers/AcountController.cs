@@ -27,4 +27,9 @@ public class AcountController : Controller
     {
         return View();
     }
+
+    public IActionResult ForgetPassword()
+    {
+        return View();
+    }
 }

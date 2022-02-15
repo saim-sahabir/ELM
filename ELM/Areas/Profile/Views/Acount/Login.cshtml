@@ -1,4 +1,9 @@
-  <!-- Login Section -->
+  
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<!-- Login Section -->
     <section class=" white mt-lg-5 mb-5 " style="margin-top: 85px;">
       <div class=" h-100 d-flex mode justify-content-center align-items-center">
         <div class="container">
@@ -15,28 +20,35 @@
                   </div>
 
                   <!-- Body -->
-                
+                  
+                  <div class="inline-ul text-center d-flex justify-content-center">
+                    <a class="p-2 m-2 fa-lg gplus-ic aqua-gradient rounded"><i class="fab fa-google-plus-g white-text"></i></a>
+                    <a class="p-2 m-2 fa-lg fb-ic aqua-gradient rounded"><i class="fab fa-facebook-f white-text"> </i></a>
+                    <a class="p-2 m-2 fa-lg ins-ic aqua-gradient rounded"><i class="fab fa-instagram white-text"> </i></a>
+                  </div>
+                  <hr class="mt-4">
 
                   <div class="md-form">
-                    <i class="fas fa-envelope prefix white-text"></i>
+                    <i class="fas fa-envelope prefix text-default"></i>
                     <input type="text" id="orangeForm-email" class="form-control">
                     <label for="orangeForm-email">Your email</label>
                   </div>
 
                   <div class="md-form">
-                    <i class="fas fa-lock prefix white-text"></i>
+                    <i class="fas fa-lock prefix text-default"></i>
                     <input type="password" id="orangeForm-pass" class="form-control">
                     <label for="orangeForm-pass">Your password</label>
+                    
                   </div>
+                  <div class="md-from mb-2">
+                    <a asp-area="Profile" asp-controller="Acount" asp-action="ForgetPassword"  class="text-default">Forget Passwort? </a>
+                     <a asp-area="Profile" asp-controller="Acount" class="text-default" asp-action="Register" style=" float: right;">Create New </a>
+                  </div>
+                  
 
                   <div class="text-center">
-                    <button class="btn aqua-gradient btn-lg">Sign up</button>
-                    <hr class="mt-4">
-                    <div class="inline-ul text-center d-flex justify-content-center">
-                      <a class="p-2 m-2 fa-lg tw-ic aqua-gradient rounded"><i class="fab fa-twitter white-text"></i></a>
-                      <a class="p-2 m-2 fa-lg li-ic aqua-gradient rounded"><i class="fab fa-linkedin-in white-text"> </i></a>
-                      <a class="p-2 m-2 fa-lg ins-ic aqua-gradient rounded"><i class="fab fa-instagram white-text"> </i></a>
-                    </div>
+                    <button class="btn aqua-gradient btn-lg">Login</button>
+                  
                   </div>
 
                 </div>
