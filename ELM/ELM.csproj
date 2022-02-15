@@ -32,10 +32,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Areas\Profile\Controllers" />
       <Folder Include="Areas\Profile\Data" />
       <Folder Include="Areas\Profile\Models" />
-      <Folder Include="Areas\Profile\Views" />
     </ItemGroup>
 
 </Project>
