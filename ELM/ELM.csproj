@@ -33,7 +33,6 @@
 
     <ItemGroup>
       <Folder Include="Areas\Profile\Data" />
-      <Folder Include="Areas\Profile\Models" />
     </ItemGroup>
 
 </Project>
