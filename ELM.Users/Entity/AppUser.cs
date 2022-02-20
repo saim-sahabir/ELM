@@ -7,8 +7,9 @@ public class AppUser : IdentityUser
     
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
+    public string? Address { get; set; }
     public string? DisplayName { get; set; }
-
+    public string? ProfileImage { get; set; }
     public string? TwitterUserId { get; set; }
     public string? TwitterScreenName { get; set; }
 

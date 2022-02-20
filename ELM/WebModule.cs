@@ -13,6 +13,8 @@ public class WebModule :Module
             //.InstancePerLifetimeScope();
         builder.RegisterType<ExpenseModel>().AsSelf();
         builder.RegisterType<RegisterModel>().AsSelf();
+        builder.RegisterType<LoginModel>().AsSelf();
+        
         base.Load(builder);
     }
 }

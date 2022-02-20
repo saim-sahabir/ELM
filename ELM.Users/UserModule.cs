@@ -1,5 +1,9 @@
 using Autofac;
 using ELM.Users.DbContext;
+using ELM.Users.Entity;
+using ELM.Users.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ELM.Users;
 
@@ -21,11 +25,36 @@ public class UserModule : Module
             .WithParameter("assemblyName", _assemblyName)
             .InstancePerLifetimeScope();
         
+        builder.RegisterType<UserDbContext>().AsSelf()
+            .As<IdentityDbContext<AppUser>>()
+            .WithParameter("connectionString", _connectionString)
+            .WithParameter("assemblyName", _assemblyName)
+            .InstancePerLifetimeScope();
+
+        
         builder.RegisterType<UserDbContext>().As<IUserDbContext>()
             .WithParameter("connectionString", _connectionString)
             .WithParameter("assemblyName", _assemblyName)
             .InstancePerLifetimeScope();
+        
+        
+        builder.RegisterType<MemberService>().As<IMemberService>()
+            .InstancePerLifetimeScope();
+        
+        builder.RegisterType<MemberService>().AsSelf()
+            .InstancePerLifetimeScope();
+        
+        builder.RegisterType<UserManager<AppUser>>().AsSelf()
+            .InstancePerLifetimeScope();
+        
+        builder.RegisterType<RoleManager<IdentityRole>>().AsSelf()
+            .InstancePerLifetimeScope();
+       
+        
+        
+        
         base.Load(builder);
     }
 
 }
+

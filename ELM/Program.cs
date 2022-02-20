@@ -9,6 +9,7 @@ using ELM.Expenses;
 using ELM.Expenses.DbContext;
 using ELM.Users;
 using ELM.Users.DbContext;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
 using Serilog.Events;
 
@@ -36,9 +37,38 @@ builder.Services.AddDbContext<ElmDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<UserDbContext>();
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<UserDbContext>()
+    .AddDefaultTokenProviders();
+
+
 builder.Services.AddControllersWithViews();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    options.Cookie.Name = "app-uc";
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.LoginPath = "/Identity/Account/Login";
+    // ReturnUrlParameter requires 
+    //using Microsoft.AspNetCore.Authentication.Cookies;
+    options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+    options.SlidingExpiration = true;
+});
+
+    builder.Services.AddSession(options =>
+    {
+        options.IdleTimeout = TimeSpan.FromMinutes(30);
+        options.Cookie.HttpOnly = true;
+        options.Cookie.IsEssential = true;
+    }
+);
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("InternalUser", policy => policy.RequireRole("Admin"));
+});
 //serilog Config 
 
 
@@ -71,6 +101,7 @@ try {
 
     app.UseAuthentication();
     app.UseAuthorization();
+    app.UseCookiePolicy();
 //area Route Config 
 
     app.MapControllerRoute(
