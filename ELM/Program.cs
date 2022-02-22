@@ -2,6 +2,7 @@ using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using ELM;
+using ELM.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ELM.Data;
@@ -9,6 +10,7 @@ using ELM.Expenses;
 using ELM.Expenses.DbContext;
 using ELM.Users;
 using ELM.Users.DbContext;
+using ELM.Users.Entity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
 using Serilog.Events;
@@ -21,24 +23,23 @@ var assemblyName = Assembly.GetExecutingAssembly().FullName;
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {  
-    containerBuilder.RegisterModule(new WebModule());
+    containerBuilder.RegisterModule(new WebModule(connectionString, assemblyName));
     containerBuilder.RegisterModule(new ExpenseModule(connectionString, assemblyName));
     containerBuilder.RegisterModule(new UserModule(connectionString, assemblyName));
     
   
 });
-
 // Add services to the container.
-builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<WebUserDbContext>(options =>
+    options.UseSqlServer(connectionString, m => m.MigrationsAssembly(assemblyName)));
 builder.Services.AddDbContext<ElmDbContext>(options =>
     options.UseSqlServer(connectionString, m => m.MigrationsAssembly(assemblyName)));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<WebUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<UserDbContext>()
+    .AddEntityFrameworkStores<WebUserDbContext>()
     .AddDefaultTokenProviders();
 
 
@@ -123,4 +124,3 @@ finally
 {
     Log.CloseAndFlush();
 }
-

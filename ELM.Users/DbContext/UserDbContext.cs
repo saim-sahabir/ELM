@@ -27,7 +27,7 @@ public class UserDbContext :  IdentityDbContext<AppUser>, IUserDbContext
         base.OnConfiguring(optionsBuilder);
         
     }
-
-    
+     
+    public IdentityDbContext<AppUser> AspNetUsers { get; set; } 
 
 }

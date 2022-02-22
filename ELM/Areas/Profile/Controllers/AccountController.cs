@@ -16,7 +16,7 @@ public class AccountController : Controller
         _logger = logger; 
         _scope = lifetimeScope;
     }
-    // GET
+ /*   // GET
     [HttpGet]
     public IActionResult Login()
     {
@@ -44,13 +44,13 @@ public class AccountController : Controller
     }
 
     [HttpPost, ValidateAntiForgeryToken]
-    public IActionResult Register(RegisterModel model)
+    public async Task<IActionResult> Register(RegisterModel model)
     {
         if (ModelState.IsValid)
         { 
             model.Resolve(_scope);
             
-             model.RegisterUser();
+         await  model.CreateUser();
         }
 
         return View(model);
@@ -60,4 +60,5 @@ public class AccountController : Controller
     {
         return View();
     }
+    */
 }

@@ -12,15 +12,15 @@ public class MemberService : IMemberService
     private readonly ILifetimeScope _scope;
     private readonly UserManager<AppUser> _userManager;
     private readonly ILogger<MemberService> _logger;
-   // private readonly IEmailSender _emailSender;
+    private readonly IEmailSender _emailSender;
 
    
    
-    public MemberService(ILogger<MemberService> logger, ILifetimeScope scope, UserManager<AppUser> userManager //,IEmailSender emailSender
+    public MemberService(ILogger<MemberService> logger, ILifetimeScope scope, UserManager<AppUser> userManager ,IEmailSender emailSender
                                                                              )
     {
         _logger = logger;
-     //   _emailSender = emailSender;
+        _emailSender = emailSender;
         _scope = scope;
         _userManager = userManager;
        
