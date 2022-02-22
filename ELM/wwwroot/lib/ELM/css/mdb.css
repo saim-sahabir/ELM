@@ -11406,17 +11406,6 @@ span[data-jarallax-element] {
   height: 100%;
   z-index: -1; }
 
-.sn-bg-1 {
-  background-image: url("https://mdbootstrap.com/img/Photos/Others/sidenav1.jpg"); }
-
-.sn-bg-2 {
-  background-image: url("https://mdbootstrap.com/img/Photos/Others/sidenav2.jpg"); }
-
-.sn-bg-3 {
-  background-image: url("https://mdbootstrap.com/img/Photos/Others/sidenav3.jpg"); }
-
-.sn-bg-4 {
-  background-image: url("https://mdbootstrap.com/img/Photos/Others/sidenav4.jpg"); }
 
 .side-nav {
   position: fixed;
@@ -17218,10 +17207,10 @@ button.md-toast-close-button {
 .fixed-sn .double-nav,
 .fixed-sn main,
 .fixed-sn footer {
-  padding-left: 15rem; }
+  padding-left: 15rem;}
 
 .fixed-sn main {
-  padding-top: 5.5rem; }
+  padding-top: 4.5rem; }
 
 @media (max-width: 1440px) {
   .fixed-sn .double-nav,
@@ -17232,20 +17221,20 @@ button.md-toast-close-button {
 @media (min-width: 600px) {
   .fixed-sn main,
   .fixed-sn .page-footer .container-fluid {
-    margin-right: 2%;
-    margin-left: 2%; } }
+    margin-right: 2% !important;
+    margin-left: 2% !important; } }
 
 @media (min-width: 992px) {
   .fixed-sn main,
   .fixed-sn .page-footer .container-fluid {
-    margin-right: 5%;
-    margin-left: 5%; } }
+    margin-right: 3% !important;
+    margin-left: 3% !important; } }
 
 @media (min-width: 1200px) {
   .fixed-sn main,
   .fixed-sn .page-footer .container-fluid {
-    margin-right: 6%;
-    margin-left: 6%; } }
+    margin-right: 1.5% !important;
+    margin-left: 1.5% !important; } }
 
 .hidden-sn main {
   padding-top: 5.5rem; }
