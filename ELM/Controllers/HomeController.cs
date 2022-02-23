@@ -2,9 +2,11 @@
 using Autofac;
 using Microsoft.AspNetCore.Mvc;
 using ELM.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ELM.Controllers;
 
+[AllowAnonymous]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -16,13 +18,13 @@ public class HomeController : Controller
         _scope = scope;
 
     }
-
+[AllowAnonymous]
     public IActionResult Index()
     {
         
         return View();
     }
-
+[AllowAnonymous]
     public IActionResult Privacy()
     {
         return View();

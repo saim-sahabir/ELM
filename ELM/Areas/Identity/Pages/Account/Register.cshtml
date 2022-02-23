@@ -4,44 +4,95 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email"></label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+<!-- Register Section -->
+    <section class=" white mt-lg-5 mb-5 " style="margin-top: 85px;">
+      <div class=" h-100 d-flex mode jLstify-content-center align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-5">
+
+              <!-- Form with header -->
+              <div class="card wow fadeIn" data-wow-delay="0.3s">
+                <div class="card-body pt-5 pb-5">
+
+                  <!-- Header -->
+                  <div class="form-header aqua-gradient">
+                    <h3 class="font-weight-500 my-2 py-1"><i class="fas fa-user"></i> Register:</h3>
+                  </div>
+
+                  <!-- Body -->
+                  
+                  <div class="inline-ul text-center d-flex justify-content-center">
+                    <a class="p-2 m-2 fa-lg gplus-ic aqua-gradient rounded"><i class="fab fa-google-plus-g white-text"></i></a>
+                    <a class="p-2 m-2 fa-lg fb-ic aqua-gradient rounded"><i class="fab fa-facebook-f white-text"> </i></a>
+                    <a class="p-2 m-2 fa-lg ins-ic aqua-gradient rounded"><i class="fab fa-instagram white-text"> </i></a>
+                  </div>
+                  <hr class="mt-4">
+                  <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" >
+                   <div class="md-form">
+                     <i class="fa fa-user prefix text-default"></i>
+                     <input type="text" asp-for="Input.DisplayName" id="orangeForm-email" class="form-control">
+                     <label for="orangeForm-email">Your Full Name</label>
+                     <span asp-validation-for="Input.DisplayName" class="text-danger" style="font-size: 15px;"></span>
+                     </div>
+
+                  <div class="md-form">
+                    <i class="fas fa-envelope prefix text-default"></i>
+                    <input type="text" asp-for="Input.Email" id="orangeForm-email" class="form-control">
+                    <label for="orangeForm-email">Your email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger" style="font-size: 15px;"></span>
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fas fa-lock prefix text-default "></i>
+                    <input type="password" asp-for="Input.Password" id="orangeForm-pass" class="form-control">
+                    <label for="orangeForm-pass">Your password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger" style="font-size: 15px;"></span>
+                    
+                  </div>
+                  
+                  <div class="md-form">
+                    <i class="fas fa-lock prefix text-default"></i>
+                    <input type="password" asp-for="Input.ConfirmPassword" id="orangeForm-pass" class="form-control">
+                    <label for="orangeForm-pass">Confiram password</label>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger" style="font-size: 15px;"></span>
+                                      
+                    </div>
+                  
+                  <div class="md-from mb-2">
+                    <a asp-page="./Login"  class="text-default">Do you have an account </a>
+                   
+                  </div>
+                  
+
+                  <div class="text-center">
+                    <button class="btn aqua-gradient btn-lg">Register</button>
+                  
+                  </div>
+                  </form>
+                </div>
+              </div>
+              <!-- Form with header -->
+
             </div>
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.ConfirmPassword"></label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Login Section -->
+
+
+
+
+
+
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
+                        
                     </div>
                 }
                 else
@@ -58,10 +109,4 @@
                     </form>
                 }
             }
-        </section>
-    </div>
-</div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+     
