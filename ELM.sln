@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELM.Expenses", "ELM.Expense
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELM.Users", "ELM.Users\ELM.Users.csproj", "{DA526E1C-2C48-44B8-BC29-5E5E61A97879}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELM.Organization", "ELM.Organization\ELM.Organization.csproj", "{5A04FA4D-C5AE-4507-AC50-F56A98E68335}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{DA526E1C-2C48-44B8-BC29-5E5E61A97879}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA526E1C-2C48-44B8-BC29-5E5E61A97879}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA526E1C-2C48-44B8-BC29-5E5E61A97879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A04FA4D-C5AE-4507-AC50-F56A98E68335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A04FA4D-C5AE-4507-AC50-F56A98E68335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A04FA4D-C5AE-4507-AC50-F56A98E68335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A04FA4D-C5AE-4507-AC50-F56A98E68335}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
