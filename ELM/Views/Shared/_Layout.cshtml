@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="~/lib/ELM/css/bootstrap.min.css" />
   <link rel="stylesheet" href="~/lib/ELM/css/mdb.css"/>
   <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  @await RenderSectionAsync("Style", required: false)
 </head>
 
  @if (SignInManager.IsSignedIn(User))
