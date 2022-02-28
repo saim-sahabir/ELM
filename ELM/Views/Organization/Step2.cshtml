@@ -1,0 +1,122 @@
+   <!-- Section: Inputs -->
+   <section class="section card mb-5">
+
+     <div class="card-body">
+       <div class="container">
+         <!-- Section heading -->
+         <h1 class="text-center my-3 h2"><i class="fas fa-building" ></i>  Welcome! organization</h1>
+         <!-- Grid row -->
+         <div class="row justify-content-center">
+            
+           <div class="col-md-7 ">
+             <!-- Grid column -->
+             <hr/>
+             <div class="col-md-12 ">
+               <span class="pb-2"> Setup Organization Logo</span>
+               <br/>
+               <div class="row justify-content-center">
+
+                 <div class="card">
+                   <div style="text-align: center">
+                     <img src="~/img/org.png" style="width: 80px; padding: 5px;" alt="logo"/>
+                   </div>
+                   <a href="#" id="org_Logo_UploadBtn" class="btn btn-sm aqua-gradient">Choose image</a>
+                      
+                 </div>
+               </div>
+
+             </div>
+                  
+             <hr/>
+             <div class="col-md-12 ">
+               <span>Invite member using email or search</span>
+               <div class="md-form md-outline">
+
+                 <input type="text" id="f2" class="form-control">
+                 <label for="f2" class="">Invite member </label>
+               </div>
+             </div>
+                
+                     
+             <div class="col-md-12 ">
+               <div class="md-form">
+                 <button type="submit" class="btn btn-block aqua-gradient">Next</button>
+               </div>
+             </div>
+                
+             <div class="col-md-12 ">
+               <div class="md-form">
+                 <button type="submit" class="btn btn-block btn-default">Skip</button>
+               </div>
+             </div>
+                
+             <!-- Grid column -->
+
+
+           </div>
+           <!-- Grid row -->
+         </div>
+       </div>
+     </div>
+      
+   </section>
+   
+   <partial name="_imgUploadModal"/>
+   <!-- Section: Inputs -->
+   
+   @section Style
+   {
+     <link rel="stylesheet" href="~/css/croppie.css"/>
+   }
+   
+   @section Scripts
+   {
+
+     <script src="~/js/croppie.js"></script>
+
+     <script>
+       $(function() {
+         "use strict";
+       
+       $('#org_Logo_UploadBtn').on('click', function (e){
+         e.preventDefault();
+         let $modal = $('#imageUploadModal');
+         let modalBody = $('#UploadModalBody');
+          modalBody.html('<input type="file" name="orgLogo" class="InputImageBtn" id="upload_image" style="display: none;" /><div class="row"><div class="col-md-8"><img src="" id="ShowImage" class="img-fluid" /></div></div>');
+          $('.InputImageBtn').trigger('click');
+ 
+          let crop_image = document.getElementById('ShowImage');
+          let cropper;
+         $('#upload_image').change(function(event){
+         let files = event.target.files;
+         let done = function(url){
+         crop_image.src = url;
+         $modal.modal('show');
+         };
+         if(files && files.length > 0)
+         {
+         let reader = new FileReader();
+         reader.onload = function(event)
+         {
+         done(reader.result);
+         };
+         reader.readAsDataURL(files[0]);
+         }
+         });
+         $modal.on('shown.bs.modal', function() {
+         cropper = new Cropper(crop_image, {
+         aspectRatio: 1,
+         viewMode: 3,
+         preview:'.preview'
+         });
+         }).on('hidden.bs.modal', function(){
+         cropper.destroy();
+         cropper = null;
+         });
+         
+       }); 
+       
+       })
+     </script>
+
+   }

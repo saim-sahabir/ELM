@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using ELM.Data;
 using ELM.Expenses;
 using ELM.Expenses.DbContext;
+using ELM.Organization;
+using ELM.Organization.DbContext;
 using ELM.Users;
 using ELM.Users.DbContext;
 using ELM.Users.Entity;
@@ -24,7 +26,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {  
     containerBuilder.RegisterModule(new WebModule(connectionString, assemblyName));
-    containerBuilder.RegisterModule(new ExpenseModule(connectionString, assemblyName));
+    containerBuilder.RegisterModule(new OrganizationModule(connectionString, assemblyName));
     containerBuilder.RegisterModule(new UserModule(connectionString, assemblyName));
     
   
@@ -32,8 +34,9 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 // Add services to the container.
 builder.Services.AddDbContext<WebUserDbContext>(options =>
     options.UseSqlServer(connectionString, m => m.MigrationsAssembly(assemblyName)));
-builder.Services.AddDbContext<ElmDbContext>(options =>
+builder.Services.AddDbContext<OrganizationDbContext>(options =>
     options.UseSqlServer(connectionString, m => m.MigrationsAssembly(assemblyName)));
+
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

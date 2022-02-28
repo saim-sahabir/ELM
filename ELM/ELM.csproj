@@ -28,6 +28,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ELM.Expenses\ELM.Expenses.csproj" />
+      <ProjectReference Include="..\ELM.Organization\ELM.Organization.csproj" />
       <ProjectReference Include="..\ELM.Users\ELM.Users.csproj" />
     </ItemGroup>
 

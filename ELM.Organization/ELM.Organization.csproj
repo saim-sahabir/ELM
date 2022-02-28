@@ -23,4 +23,8 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\EML.DataAccess\EML.DataAccess.csproj" />
+    </ItemGroup>
+
 </Project>

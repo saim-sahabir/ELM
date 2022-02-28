@@ -1,4 +1,11 @@
-   <!-- Section: Inputs -->
+   
+@{
+    ViewData["Title"] = "Set up organization";
+}
+
+@model OrganizationModel
+
+<!-- Section: Inputs -->
       <section class="section card mb-5">
 
         <div class="card-body">
@@ -8,44 +15,51 @@
           <!-- Grid row -->
           <div class="row justify-content-center">
             
-              <div class="col-md-7 ">
-                <!-- Grid column -->
-                <div class="col-md-12 ">
-                  <div class="md-form md-outline">
-                    <input type="text" id="f2" class="form-control">
-                    <label for="f2" class="">Orgaization Name *</label>
-                  </div>
+            <div class="col-md-7 ">
+              <!-- Grid column -->
+              <form asp-controller="Organization" asp-action="Create" method="post" asp-antiforgery="true">
+              <div class="col-md-12 ">
+                <div class="md-form md-outline">
+                  <input type="text" asp-for="Name" id="f2" class="form-control">
+                  <label for="f2" class="">Orgaization Name *</label>
+                  <span asp-validation-for="Name" class="text-danger" style="font-size: 15px;"></span>
                 </div>
-                
-                      <div class="col-md-12 ">
-                                  <div class="md-form md-outline">
-                                    <input type="email" id="f2" class="form-control">
-                                    <label for="f2" class="">Orgaization Email *</label>
-                                  </div>
-                                </div>
-
-                <div class="col-md-12 ">
-                  <div class="md-form md-outline">
-                    <input type="tel" id="f2" class="form-control">
-                    <label for="f2" class="">Phone:</label>
-                  </div>
-                </div>
-                
-                <div class="col-md-12 ">
-                  <div class="md-form md-outline">
-                    <textarea type="text" id="form101" class="md-textarea form-control" rows="3"></textarea>
-                  </div>
-                </div>
-                
-                 <div class="col-md-12 ">
-                                  <div class="md-form">
-                                  <button type="submit" class="btn btn-block aqua-gradient">Next</button>
-                                  </div>
-                                </div>
-                
-                <!-- Grid column -->
-
               </div>
+                
+              <div class="col-md-12 ">
+                <div class="md-form md-outline">
+                  <input type="email" asp-for="Email" id="f2" class="form-control">
+                  <label for="f2" class="">Orgaization Email *</label>
+                   <span asp-validation-for="Email" class="text-danger" style="font-size: 15px;"></span>
+                </div>
+              </div>
+
+              <div class="col-md-12 ">
+                <div class="md-form md-outline">
+                  <input type="tel" asp-for="Phone" id="f2" class="form-control">
+                  <label for="f2" class="">Phone:</label>
+                   <span asp-validation-for="Phone" class="text-danger" style="font-size: 15px;"></span>
+                </div>
+              </div>
+                
+              <div class="col-md-12 ">
+                <div class="md-form md-outline">
+                  <textarea type="text" asp-for="Address" id="form101" class="md-textarea form-control" rows="3"></textarea>
+                  <label for="f2" class="">Address:</label>
+                   <span asp-validation-for="Address" class="text-danger" style="font-size: 15px;"></span>
+                </div>
+              </div>
+                
+              <div class="col-md-12 ">
+                <div class="md-form">
+                  <button type="submit" class="btn btn-block aqua-gradient">Next</button>
+                </div>
+              </div>
+                
+              <!-- Grid column -->
+</form>
+            </div>
+            
               <!-- Grid row -->
             </div>
             </div>

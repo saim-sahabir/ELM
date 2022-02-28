@@ -1,4 +1,5 @@
 using Autofac;
+using ELM.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,8 +22,27 @@ public class OrganizationController : Controller
         return View();
     }
     
+    [HttpGet]
     public IActionResult Create()
+    {
+        var model = _scope.Resolve<OrganizationModel>();
+        return View(model);
+    }
+    
+    [ HttpPost, ValidateAntiForgeryToken]
+    public IActionResult Create(OrganizationModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            return RedirectToAction("Step2");
+        }
+        return View();
+    }
+
+    [HttpGet]
+    public IActionResult Step2()
     {
         return View();
     }
+
 }
