@@ -39,6 +39,7 @@ public class WebModule :Module
              .InstancePerLifetimeScope();
          
          builder.RegisterType<OrganizationModel>().AsSelf();
+         builder.RegisterType<OrganizationSetupModel>().AsSelf();
          
         base.Load(builder);
     }

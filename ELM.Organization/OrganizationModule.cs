@@ -1,5 +1,8 @@
 using Autofac;
 using ELM.Organization.DbContext;
+using ELM.Organization.Repositories;
+using ELM.Organization.Services;
+using ELM.Organization.UnitOfWorks;
 
 namespace ELM.Organization;
 
@@ -25,13 +28,13 @@ public class OrganizationModule : Module
             .WithParameter("assemblyName", _assemblyName)
             .InstancePerLifetimeScope();
 
-        // builder.RegisterType<ExpenseRepository>().As<IExpenseRepository>()
-        //     .InstancePerLifetimeScope();
-        // builder.RegisterType<ExpensesUnitOfWork>().As<IExpensesUnitOfWork>()
-        //     .InstancePerLifetimeScope();
-        //
-        // builder.RegisterType<ExpenseService>().As<IExpenseService>()
-        //     .InstancePerLifetimeScope();
+         builder.RegisterType<OrganizationRepository>().As<IOrganizationRepository>()
+             .InstancePerLifetimeScope();
+         builder.RegisterType<OrganizationUnitOfWork>().As<IOrganizationUnitOfWork>()
+             .InstancePerLifetimeScope();
+        
+         builder.RegisterType<OrganizationService>().As<IOrganizationServices>()
+            .InstancePerLifetimeScope();
         
         base.Load(builder);
     } 

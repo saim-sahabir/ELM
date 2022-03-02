@@ -11,7 +11,7 @@ public class Expenses : IEntity<int>
     public DateTime Date { get; set; }
     public string? Category { get; set; }
     public string? Status { get; set; }
-    public int OwnerId { get; set; }
+    public string? OwnerId { get; set; }
     public int OrgId { get; set; }
     public bool IsActive { get; set; }
     public IList<ExpenseItems> ItemsList { get; set; }

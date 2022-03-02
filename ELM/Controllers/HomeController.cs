@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics;
 using Autofac;
+using ELM.Areas.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using ELM.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace ELM.Controllers;
 
@@ -11,11 +13,13 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly ILifetimeScope _scope;
+   
 
     public HomeController(ILogger<HomeController> logger, ILifetimeScope scope)
     {
         _logger = logger;
         _scope = scope;
+        
 
     }
 [AllowAnonymous]
@@ -24,6 +28,8 @@ public class HomeController : Controller
         
         return View();
     }
+    
+    
 [AllowAnonymous]
     public IActionResult Privacy()
     {

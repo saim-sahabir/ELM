@@ -1,10 +1,13 @@
-   <!-- Section: Inputs -->
-   <section class="section card mb-5">
+  @model OrganizationSetupModel
+  <!-- Section: Inputs -->
+  
+  
+  <section class="section card mb-5">
 
      <div class="card-body">
        <div class="container">
          <!-- Section heading -->
-         <h1 class="text-center my-3 h2"><i class="fas fa-building" ></i>  Welcome! organization</h1>
+         <h1 class="text-center my-3 h2"><i class="fas fa-building" ></i>  Welcome! @Model.Name</h1>
          <!-- Grid row -->
          <div class="row justify-content-center">
             
@@ -18,7 +21,15 @@
 
                  <div class="card">
                    <div style="text-align: center">
-                     <img src="~/img/org.png" style="width: 80px; padding: 5px;" alt="logo"/>
+                     @if (Model.Logo != null)
+                     {
+                       <img id="OrgLogo" src="~/upload/@Model.Logo" style="width: 80px; padding: 5px;" alt="logo"/>
+                     }
+                     else
+                     {
+                       <img id="OrgLogo" src="~/img/org.png" style="width: 80px; padding: 5px;" alt="logo"/>
+                     }
+                     
                    </div>
                    <a href="#" id="org_Logo_UploadBtn" class="btn btn-sm aqua-gradient">Choose image</a>
                       
@@ -66,6 +77,7 @@
    
    @section Style
    {
+      
      <link rel="stylesheet" href="~/css/croppie.css"/>
    }
    
@@ -78,6 +90,8 @@
        $(function() {
          "use strict";
        
+         let baseUrl = '@Url.Content("~/upload/")';
+         
        $('#org_Logo_UploadBtn').on('click', function (e){
          e.preventDefault();
          let $modal = $('#imageUploadModal');
@@ -113,10 +127,42 @@
          cropper.destroy();
          cropper = null;
          });
-         
-       }); 
+          
+       $('#CropAndUploadBtn').click(function(){
+        let canvas = cropper.getCroppedCanvas({
+         width:400,
+         height:400
+          });
+        canvas.toBlob(function(blob){
+         let url = URL.createObjectURL(blob);
+         let reader = new FileReader();
+         reader.readAsDataURL(blob);
+         reader.onloadend = function(){
+         let base64data = reader.result; 
+        $.ajax({
+              url:'@Url.Action("UploadLogo","Organization")',
+              method:'POST',
+              data:{'image':base64data , 'LogoId': @Model.Id },
+        success:function(data){
+                  
+                        if (data.success == true){
+                          $('#OrgLogo').attr("src",""+baseUrl+data.filePath+"");
+                          
+                          $modal.modal('hide'); 
+                          
+                           toastr.success(''+data.msg+'', '', {positionClass: 'md-toast-top-center'});$('#toast-container').attr('class','md-toast-top-center');
+                        }
+                        
+                        }
+                        
+      
+      });
+      };
+       });
+        });
+       });
+     });
        
-       })
      </script>
 
    }

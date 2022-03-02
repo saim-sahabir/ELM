@@ -31,6 +31,7 @@ public class ExpenseModel
         };
         
         _expenseService.CreateExpense(expense);
+         int expenseId  = expense.Id;
     }
     
 

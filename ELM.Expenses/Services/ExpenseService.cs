@@ -24,6 +24,8 @@ public class ExpenseService : IExpenseService
         };
         _expensesUnitOfWork.Expense.Add(entity);
         _expensesUnitOfWork.Save();
+        
     } 
+    
     
 }

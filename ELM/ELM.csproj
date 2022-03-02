@@ -34,6 +34,7 @@
 
     <ItemGroup>
       <Folder Include="Areas\Profile\Data" />
+      <Folder Include="wwwroot\upload" />
     </ItemGroup>
 
     <ItemGroup>
