@@ -1,4 +1,4 @@
-  @model OrganizationSetupModel
+  @model ELM.Models.OrganizationSetupModel
   <!-- Section: Inputs -->
   
   
@@ -39,6 +39,7 @@
              </div>
                   
              <hr/>
+             <form asp-controller="Organization" asp-action="Step2">
              <div class="col-md-12 ">
                <span>Invite member using email or search</span>
                <div class="md-form md-outline">
@@ -54,16 +55,15 @@
                  <button type="submit" class="btn btn-block aqua-gradient">Next</button>
                </div>
              </div>
-                
+                </form>
              <div class="col-md-12 ">
                <div class="md-form">
-                 <button type="submit" class="btn btn-block btn-default">Skip</button>
+                 <a asp-controller="Organization" asp-action="Index" type="submit" class="btn btn-block btn-default">Skip</a>
                </div>
              </div>
                 
              <!-- Grid column -->
-
-
+             
            </div>
            <!-- Grid row -->
          </div>

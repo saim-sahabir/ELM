@@ -1,0 +1,103 @@
+<!-- Central Modal Large Info -->
+<div class="modal fade" id="CreateDepositModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog  modal-fluid modal-notify modal-info" role="document">
+        <!-- Content -->
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+                <p class="heading lead">Add Deposit</p>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+               <div class="container">
+                      <!-- Section heading -->
+                      <h1 class="text-center my-3 h2"><i class="fas fa-money-bill-alt" ></i>  Add Deposit </h1>
+                      <!-- Grid row -->
+                      <div class="row justify-content-center">
+                        
+                        <div class="col-md-7 ">
+                          <!-- Grid column -->
+                        @*<form asp-controller="Organization" asp-action="Create" method="post" asp-antiforgery="true">*@
+                          <div class="col-md-12 ">
+                            <div class="md-form md-outline">
+                              <input type="text" id="f2" class="form-control">
+                              <label for="f2" class="">Deposit holder *</label>
+                             
+                            </div>
+                          </div>
+                            
+                          <div class="col-md-12 ">
+                            <div class="md-form md-outline">
+                              <input type="number"  id="f2" class="form-control">
+                              <label for="f2" class="">Amount *</label>
+                               
+                            </div>
+                          </div>
+                          
+                          <div class="col-md-12 ">
+                            <div class="md-form md-outline">
+                              <input type="text" id="f2" class="form-control">
+                              <label for="f2" class="">Refarence *</label>
+                                                       
+                            </div>
+                          </div>
+                          <div class="col-md-12 ">
+                                                      <div class="md-form md-outline">
+                                                        <input type="text" id="f2" class="form-control">
+                                                        <label for="f2" class="">Payment method *</label>
+                                                       
+                                                      </div>
+                                                    </div>
+                                                      
+                                                      
+            
+                          <div class="col-md-12 ">
+                            <div class="md-form md-outline">
+                              <input type="date"  id="f2" class="form-control" value="@DateTime.Today">
+                              <label for="f2" class="">Date *</label>
+                               
+                            </div>
+                          </div>
+                            
+                          <div class="col-md-12 ">
+                            <div class="md-form md-outline">
+                              <textarea type="text"  id="form101" class="md-textarea form-control" rows="3"></textarea>
+                              <label for="f2" class="">Diteals:</label>
+                               
+                            </div>
+                          </div>
+                            
+                          <div class="col-md-12 ">
+                            <div class="md-form">
+                              <button type="submit" class="btn btn-block aqua-gradient">Next</button>
+                            </div>
+                          </div>
+                            
+                          <!-- Grid column -->
+            <!--</form>-->
+                      <!--  </div>-->
+                        
+                          <!-- Grid row -->
+                        </div>
+                        </div>    
+                
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <a type="button" class="btn btn-secondary" data-dismiss="modal"> Cancel</a>
+                <a type="button" class="btn btn-outline-info waves-effect" id="CropAndUploadBtn">Save</a>
+            </div>
+        </div>
+        <!-- Content -->
+    </div>
+</div>
+<!-- Central Modal Large Info -->
+
