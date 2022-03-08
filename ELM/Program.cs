@@ -13,6 +13,7 @@ using ELM.Organization.DbContext;
 using ELM.Users;
 using ELM.Users.DbContext;
 using ELM.Users.Entity;
+using ELM.Users.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
 using Serilog.Events;
@@ -25,14 +26,14 @@ var assemblyName = Assembly.GetExecutingAssembly().FullName;
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {  
-    containerBuilder.RegisterModule(new WebModule(connectionString, assemblyName));
+    containerBuilder.RegisterModule(new WebModule());
     containerBuilder.RegisterModule(new OrganizationModule(connectionString, assemblyName));
     containerBuilder.RegisterModule(new UserModule(connectionString, assemblyName));
     
   
 });
 // Add services to the container.
-builder.Services.AddDbContext<WebUserDbContext>(options =>
+builder.Services.AddDbContext<UserDbContext>(options =>
     options.UseSqlServer(connectionString, m => m.MigrationsAssembly(assemblyName)));
 builder.Services.AddDbContext<OrganizationDbContext>(options =>
     options.UseSqlServer(connectionString, m => m.MigrationsAssembly(assemblyName)));
@@ -40,13 +41,39 @@ builder.Services.AddDbContext<OrganizationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<WebUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<WebUserDbContext>()
+
+builder.Services.AddIdentity<AppUser, Role>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddUserManager<UserManager>()
+    .AddRoleManager<RoleManager>()
+    .AddSignInManager<SignInManager>()
+    .AddEntityFrameworkStores<UserDbContext>()
+    .AddDefaultUI()
     .AddDefaultTokenProviders();
 
 
-builder.Services.AddControllersWithViews();
+
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+   
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+    
+    // Default Lockout settings.
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+    
+    // Default User settings.
+    options.User.AllowedUserNameCharacters =  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+/";
+    options.User.RequireUniqueEmail = true; 
+    
+});
+
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -54,7 +81,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.Name = "app-uc";
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-    options.LoginPath = "/Identity/Account/Login";
+    options.LoginPath = "/Profile/Account/Login";
     // ReturnUrlParameter requires 
     //using Microsoft.AspNetCore.Authentication.Cookies;
     options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
@@ -73,6 +100,9 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("InternalUser", policy => policy.RequireRole("Admin"));
 });
+
+builder.Services.AddControllersWithViews();
+
 //serilog Config 
 
 

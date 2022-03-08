@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace ELM.Users.Entity;
 
-public class UserRole 
+public class UserRole : IdentityUserRole<Guid>
 {
     
 }

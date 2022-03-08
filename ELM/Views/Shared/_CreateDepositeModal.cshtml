@@ -25,12 +25,21 @@
                           <!-- Grid column -->
                         @*<form asp-controller="Organization" asp-action="Create" method="post" asp-antiforgery="true">*@
                           <div class="col-md-12 ">
-                            <div class="md-form md-outline">
-                              <input type="text" id="f2" class="form-control">
-                              <label for="f2" class="">Deposit holder *</label>
+                           
+                            <select class="mdb-select md-form md-outline"  searchable="Search here..">
+                              <option value="" selected="selected">Select Deposit Holder * </option>
+                              <option value="" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">example
+                                1</option>
+                              <option value="" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">example
+                                2</option>
+                              <option value="" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg" class="rounded-circle">example
+                                1</option>
+                            </select>
+                                        <button class="btn-save btn btn-primary btn-sm">Save</button>
+                                  
                              
                             </div>
-                          </div>
+                        
                             
                           <div class="col-md-12 ">
                             <div class="md-form md-outline">
@@ -59,7 +68,7 @@
             
                           <div class="col-md-12 ">
                             <div class="md-form md-outline">
-                              <input type="date"  id="f2" class="form-control" value="@DateTime.Today">
+                             <input placeholder="Selected date" type="text" value="@DateTime.Today" id="date-picker-example" class="form-control datepicker picker__input" readonly="" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="date-picker-example_root">
                               <label for="f2" class="">Date *</label>
                                
                             </div>

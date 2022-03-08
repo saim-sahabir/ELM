@@ -1,6 +1,8 @@
+using EML.DataAccess;
+
 namespace ELM.Organization.Entities;
 
-public class Deposit
+public class Deposit : IEntity<int>
 {
     public int Id { get; set; }
     public string? MemberName { get; set; }

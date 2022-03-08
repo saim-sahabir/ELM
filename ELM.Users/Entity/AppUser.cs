@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ELM.Users.Entity;
 
-public class AppUser : IdentityUser 
+public class AppUser : IdentityUser<Guid>
 {
     
     public string? FirstName { get; set; }

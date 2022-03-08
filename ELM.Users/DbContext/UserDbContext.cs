@@ -4,13 +4,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ELM.Users.DbContext;
 
-public class UserDbContext :  IdentityDbContext<AppUser>, IUserDbContext
+public class UserDbContext :  IdentityDbContext<AppUser, Role, Guid, UserClaim, UserRole, UserLogin ,RoleClaim ,UserToken>, IUserDbContext
                               
 {
     
     private readonly string _connectionString;
     private readonly string _assemblyName;
-    
+
+    public UserDbContext(DbContextOptions<UserDbContext> options) 
+        : base(options)
+    {
+        
+    }
+        
+        
+        
     
     public UserDbContext(string connectionString, string assemblyName)
            
@@ -27,7 +35,13 @@ public class UserDbContext :  IdentityDbContext<AppUser>, IUserDbContext
         base.OnConfiguring(optionsBuilder);
         
     }
-     
-    public IdentityDbContext<AppUser> AspNetUsers { get; set; } 
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+
+        base.OnModelCreating(builder);
+    }
+    
+   
 
 }

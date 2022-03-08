@@ -24,20 +24,15 @@ public class UserModule : Module
             .WithParameter("connectionString", _connectionString)
             .WithParameter("assemblyName", _assemblyName)
             .InstancePerLifetimeScope();
-        
-        builder.RegisterType<UserDbContext>().AsSelf()
-            .As<IdentityDbContext<AppUser>>()
-            .WithParameter("connectionString", _connectionString)
-            .WithParameter("assemblyName", _assemblyName)
-            .InstancePerLifetimeScope();
 
-        
+
         builder.RegisterType<UserDbContext>().As<IUserDbContext>()
             .WithParameter("connectionString", _connectionString)
             .WithParameter("assemblyName", _assemblyName)
             .InstancePerLifetimeScope();
         
         
+        /*
         builder.RegisterType<MemberService>().As<IMemberService>()
             .InstancePerLifetimeScope();
         
@@ -49,6 +44,7 @@ public class UserModule : Module
         
         builder.RegisterType<RoleManager<IdentityRole>>().AsSelf()
             .InstancePerLifetimeScope();
+            */
        
         
         
