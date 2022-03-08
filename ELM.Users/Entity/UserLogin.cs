@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ELM.Users.Entity;
 
-public class UserRole : IdentityUserRole<Guid>
+public class UserLogin : IdentityUserLogin<Guid>
 {
     
 }

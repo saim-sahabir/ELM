@@ -1,7 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using ELM.Areas.Identity.Data
-@inject SignInManager<WebUser> SignInManager
-@inject UserManager<WebUser> UserManager
+@using ELM.Users.Entity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -128,17 +129,7 @@
             scaleShowVerticalLines: false,
           };
     
-          // // Get the context of the canvas element we want to select
-          // var ctx = document.getElementById("sales").getContext('2d');
-          // var myLineChart = new Chart(ctx).Line(data, option); //'Line' defines type of the chart.
-    
-          // // Get the context of the canvas element we want to select
-          // var ctx = document.getElementById("conversion").getContext('2d');
-          // var myRadarChart = new Chart(ctx).Radar(data, option);
-    
-          // Get the context of the canvas element we want to select
-    
-          //bar
+         
           let ctxB = document.getElementById("traffic").getContext('2d');
           let myBarChart = new Chart(ctxB, {
             type: 'bar',
@@ -209,6 +200,26 @@
     
       </script>
     
+<script>
+$(function (){
+  
+  let container = document.querySelector('.custom-scrollbar');
+     let ps = new PerfectScrollbar(container, {
+     wheelSpeed: 2,
+     wheelPropagation: true,
+     minScrollbarLength: 20
+     });
+     
+     // Material Select Initialization
+     $(document).ready(function () {
+     $('.mdb-select').materialSelect();
+     });
+  
+  
+});
+
+</script>
+
 <script>
         $(function () {
           $('.min-chart#chart-sales').easyPieChart({

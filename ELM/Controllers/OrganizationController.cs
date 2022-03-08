@@ -1,6 +1,7 @@
 using Autofac;
 using ELM.Areas.Identity.Data;
 using ELM.Models;
+using ELM.Users.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,10 @@ public class OrganizationController : Controller
 {
     private readonly ILogger<OrganizationController> _logger;
     private readonly ILifetimeScope _scope;
-    private readonly UserManager<WebUser> _userManager;
+    private readonly UserManager<AppUser> _userManager;
     private readonly IWebHostEnvironment _hostingEnvironment;
 
-    public OrganizationController(IWebHostEnvironment hostEnvironment, ILogger<OrganizationController> logger, ILifetimeScope scope, UserManager<WebUser> userManager)
+    public OrganizationController(IWebHostEnvironment hostEnvironment, ILogger<OrganizationController> logger, ILifetimeScope scope, UserManager<AppUser> userManager)
     {
         _logger = logger;
         _scope = scope;

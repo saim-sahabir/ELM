@@ -1,7 +1,8 @@
 @using Microsoft.AspNetCore.Identity
 @using ELM.Areas.Identity.Data
-@inject SignInManager<WebUser> SignInManager
-@inject UserManager<WebUser> UserManager
+@using ELM.Users.Entity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 
 
     @if (SignInManager.IsSignedIn(User))
@@ -69,7 +70,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 
-            <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My account</a>
+            <a class="dropdown-item" asp-area="Profile" asp-page="/Account/Manage/Index" title="Manage">My account</a>
             <form class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})">
               <button type="submit" class=" btn btn-link ">Logout</button>
             </form>
@@ -83,9 +84,9 @@
     else
     {
        <li class="nav-item">
-                   <a class="btn btn-secondary btn-md aqua-gradient text-white btn-rounded waves-effect waves-light" asp-area="Identity" asp-page="/Account/Login"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                   <a class="btn btn-secondary btn-md aqua-gradient text-white btn-rounded waves-effect waves-light" asp-area="Profile" asp-controller="Account" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Sign In</a>
                  </li>
                  <li class="nav-item">
-                  <a class="btn btn-secondary btn-md aqua-gradient text-white btn-rounded waves-effect waves-light" asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-user-plus"></i> Sign Up</a>
+                  <a class="btn btn-secondary btn-md aqua-gradient text-white btn-rounded waves-effect waves-light" asp-area="Profile" asp-controller="Account" asp-action="Register"><i class="fas fa-user-plus"></i> Sign Up</a>
                  </li>
     }
