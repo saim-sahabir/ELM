@@ -1,0 +1,26 @@
+@{
+    string? message = TempData["ResponseMessage"] as string;
+
+    //if(TempData["ResponseType"] != null){}
+    //ResponseTypes type = (ResponseTypes)TempData["ResponseType"];
+}
+
+@if (!string.IsNullOrWhiteSpace(message))
+{
+    ResponseTypes type = (ResponseTypes)TempData["ResponseType"];
+    @section Scripts
+        
+     {
+        <script>
+            $(function (){
+                
+                 toastr.@(type.ToString().ToLower())('@message;', '', {positionClass: 'md-toast-top-center'});$('#toast-container').attr('class','md-toast-top-center');
+                
+                });
+            </script>
+    }
+
+    @*<div class="alert alert-@(type.ToString().ToLower())" role="alert">
+        @message;
+    </div>    *@
+}

@@ -16,15 +16,15 @@
                     <span class="d-none d-md-inline-block">Create New</span>
                   </a>
                   <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" asp-controller="Organization" asp-action="Create">
+                    <a class="dropdown-item" asp-area="" asp-controller="Organization" asp-action="Create">
                       <i class="fas fa-angle-right"></i>
                       Organization
                     </a>
-                    <a class="dropdown-item" asp-controller="Expense" asp-action="Create">
+                    <a class="dropdown-item" asp-area="" asp-controller="Expense" asp-action="Create">
                       <i class="fas fa-angle-right"></i>
                       Expense
                     </a>
-                    <a class="dropdown-item" asp-controller="Deposit" asp-action="Create">
+                    <a class="dropdown-item" asp-area="" asp-controller="Deposit" asp-action="Create">
                      <i class="fas fa-angle-right"></i>
                      Deposit
                     </a>
@@ -61,16 +61,37 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle waves-effect" href="#" id="userDropdown" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
-            <img
-              src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-              class="rounded-circle"
-              height="25"
-              alt="Black and White Portrait of a Man"
-              loading="lazy"/> <span class="clearfix d-none d-sm-inline-block"> @User.Identity?.Name</span>
+            
+            @{
+               var profile = await UserManager.GetUserAsync(User);
+                if (profile.ProfileImage != null)
+                            {
+                              <img
+                                src="~/upload/@profile.ProfileImage"
+                                class="rounded-circle"
+                                height="36"
+                                width="36"
+                                alt="Black and White Portrait of a Man"
+                                loading="lazy"/>
+                            }
+                            else
+                            {
+                              <img
+                                src="~/img/profile-avatar.png"
+                                class="rounded-circle"
+                                height="36"
+                                width="36"
+                                alt="Black and White Portrait of a Man"
+                                loading="lazy"/>
+                            }
+            }
+            
+            
+            <span class="clearfix d-none d-sm-inline-block"> @User.Identity?.Name</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 
-            <a class="dropdown-item" asp-area="Profile" asp-page="/Account/Manage/Index" title="Manage">My account</a>
+            <a class="dropdown-item" asp-area="Profile" asp-controller="Manage" asp-action="Index" title="Manage">My account</a>
             <form class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})">
               <button type="submit" class=" btn btn-link ">Logout</button>
             </form>

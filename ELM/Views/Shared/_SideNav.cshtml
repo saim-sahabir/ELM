@@ -28,11 +28,11 @@
             <li><a style="font-size: 15px;" class="collapsible-header waves-effect arrow-r"><i style="font-size: 15px;" class="fas fa-plus-circle"></i> Create New<i style="font-size: 15px;" class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a asp-controller="Organization" asp-action="Create" class="waves-effect">Organization</a>
+                  <li><a asp-area="" asp-controller="Organization" asp-action="Create" class="waves-effect">Organization</a>
                   </li>
-                  <li><a asp-controller="Expense" asp-action="Create" class="waves-effect">Expense</a>
+                  <li><a asp-area="" asp-controller="Expense" asp-action="Create" class="waves-effect">Expense</a>
                   </li>
-                  <li><a asp-controller="Deposit" asp-action="Create" class="waves-effect">Deposit </a>
+                  <li><a asp-area="" asp-controller="Deposit" asp-action="Create" class="waves-effect">Deposit </a>
                                       </li>
                                          
                   </ul>
@@ -42,14 +42,14 @@
             <!-- Simple link -->
           
             <li>
-              <a asp-controller="Organization" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-building" ></i> Your Organizations</a>
+              <a asp-area="" asp-controller="Organization" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-building" ></i> Your Organizations</a>
             </li>
             
             <li>
-              <a asp-controller="Expense" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-money-check-alt"></i> Your Expenses</a>
+              <a asp-area="" asp-controller="Expense" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-money-check-alt"></i> Your Expenses</a>
             </li>
             <li>
-              <a asp-controller="Deposit" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-money-bill-alt"></i> Your Deposit</a>
+              <a asp-area="" asp-controller="Deposit" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-money-bill-alt"></i> Your Deposit</a>
                         </li>
           <li>
             <a href="../modals/modals.html" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-cog"></i>Settings</a>

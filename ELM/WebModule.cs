@@ -27,6 +27,7 @@ public class WebModule :Module
         builder.RegisterType<ExpenseModel>().AsSelf();
          builder.RegisterType<RegisterModel>().AsSelf();
          builder.RegisterType<LoginModel>().AsSelf();
+         builder.RegisterType<ProfileEditModel>().AsSelf();
         
          // builder.RegisterType<WebUserDbContext>().AsSelf()
          //            .WithParameter("connectionString", _connectionString)

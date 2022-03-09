@@ -7,7 +7,7 @@ public class RegisterModel
 {
     
     [Required]
-    [Display(Name = "Give Your Full Name")]
+    [Display(Name = "Give Your User Name")]
     public string? DisplayName { get; set; }
             
     [Required]

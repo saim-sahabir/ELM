@@ -1,0 +1,272 @@
+   
+@{
+    ViewData["Title"] = "Profile";
+}
+
+@model ProfileEditModel
+
+<!-- Section: Inputs -->
+<section class="section  mb-5">
+
+  <div class="card-body">
+    <div class="container">
+      <!-- Section heading -->
+          
+      <!-- Grid row -->
+      <div class="row  justify-content-center">
+        <div class =" card col-md-12 pb-4">     
+            
+          
+          <!-- Avatar -->
+                   
+          <div class="d-flex justify-content-center">
+            <div class="card mt-3" style="width: 100px; border-radius: 5px;">
+              @if (Model.ProfileImage != null)
+              {
+                <img id="profileImg" src="~/upload/@Model.ProfileImage" class="mt-3" style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
+              }
+              else
+              {
+                <img id="profileImg" src="~/img/profile-avatar.png" class="mt-3" style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
+              }
+             
+            </div>
+          </div>
+                       
+          
+          <!-- Name -->
+          <div style="text-align: center;">
+            <div id="uploadBtn" class="mb-2"></div>
+            
+            <h4 class="mb-3 font-weight-bold"><strong>Welcome! @Model.UserName</strong></h4>
+            <span> @Model.Email</span>
+
+          </div>
+            <div class="col-md-2">
+              <button class="btn aqua-gradient btn-sm btn-rounded waves-effect waves-light" id="EditBtn"><i class="fas fa-edit"></i> Edit</button>
+              <div id="exitBtn"></div>
+           </div>
+        </div> 
+      </div> 
+      <br>
+          
+      <!-- Grid row -->
+      <div class="row  justify-content-center">
+        <!-- Card content -->
+        <div class=" card col-md-12">
+          <div class="card-body card-body-cascade text-center">
+        
+            <!-- Edit Form -->
+            <form asp-area="Profile" asp-controller="Manage" asp-action="Index"  method="post" asp-antiforgery="true">
+              <!-- First row -->
+        
+                   
+              <div class="row">
+               <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <!-- First column -->
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input asp-for="FirstName" type="text" id="form1" class="form-control validate" value="@Model.FirstName" disabled>
+                    <label for="form1" data-error="wrong" data-success="right">First Name</label>
+                    <span asp-validation-for="FirstName" class="text-danger" style="font-size: 15px;"></span>
+                  </div>
+                </div>
+                <!-- Second column -->
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input type="text" asp-for="LastName" id="form2" class="form-control validate" value="@Model.LastName">
+                    <label for="form2" data-error="wrong" data-success="right">Last Name</label>
+                    <span asp-validation-for="LastName" class="text-danger" style="font-size: 15px;"></span>
+                  </div>
+                </div>
+              </div>
+              <!-- First row -->
+        
+              <!-- First row -->
+              <div class="row">
+                <!-- First column -->
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input type="text" asp-for="UserName" id="form81" class="form-control validate" value="@Model.UserName">
+                    <label for="form81" data-error="wrong" data-success="right">User Name</label>
+                    <span asp-validation-for="UserName" class="text-danger" style="font-size: 15px;"></span>
+                  </div>
+                </div>
+        
+                <!-- Second column -->
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input type="text" id="form82" class="form-control validate" value="@Model.PhoneNumber">
+                    <label asp-for="PhoneNumber" for="form82" data-error="wrong" data-success="right">Phone number</label>
+                    <span asp-validation-for="PhoneNumber" class="text-danger" style="font-size: 15px;"></span>
+                  </div>
+                </div>
+              </div>
+              <!-- First row -->
+        
+              <!-- Second row -->
+              <div class="row">
+        
+                <!-- First column -->
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input asp-for="Email" type="email" id="form76" class="form-control validate" value="@Model.Email">
+                    <label for="form76">Email address</label>
+                    <span asp-validation-for="Email" class="text-danger" style="font-size: 15px;"></span>
+                  </div>
+                </div>
+                <!-- Second column -->
+        
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input asp-for="Address" type="text" id="form77" class="form-control validate" value="@Model.Address">
+                    <label for="form77" data-error="wrong" data-success="right">Address</label>
+                    <span asp-validation-for="Address" class="text-danger" style="font-size: 15px;"></span>
+                  </div>
+                </div>
+              </div>
+              <!-- Second row -->
+
+              <!-- Fourth row -->
+              <div class="row">
+                <div class="col-md-12 text-center my-4" id="updateBtn">
+                  
+                </div>
+              </div>
+              <!-- Fourth row -->
+        
+            </form>
+            <!-- Edit Form -->
+        
+          </div>
+          <!-- Card content -->
+        </div>
+      </div>
+    </div>
+  </div>
+<partial name="_imgUploadModal"/>
+</section>
+
+@section Style
+   {
+      
+     <link rel="stylesheet" href="~/css/croppie.css"/>
+   }
+   
+
+@section Scripts
+{
+  
+  <script src="~/js/croppie.js"></script>
+  
+  <script>
+     $(function(){
+        "use script";
+       
+        
+        resetDeafult();
+        
+        $('#EditBtn').on('click', function (e){
+            e.preventDefault();
+            
+            $('.form-control').removeAttr('disabled');
+            $('#uploadBtn').html('<a href="#" id="org_Logo_UploadBtn" class="btn btn-sm aqua-gradient">Choose image</a>');
+            $('#updateBtn').html('<input type="submit" value="Update Account" class="btn btn-info btn-rounded">');
+            $('#exitBtn').html(' <a href="#" class=" btn btn-sm btn-danger btn-sm btn-rounded waves-effect waves-light" id="resBtn"> Exit</a>');
+            
+        });
+        
+         $("body").on('click', '#resBtn', function (e){
+                    e.preventDefault();
+                      resetDeafult();
+                       });
+                
+      
+       function resetDeafult() {
+        
+               $('.form-control').attr('disabled', 'disabled');
+                $('#uploadBtn').html('');
+                 $('#updateBtn').html('');
+                 $('#exitBtn').html('');
+             }
+      
+             
+             //////////////////////////////////////////////
+             
+             
+          let baseUrl = '@Url.Content("~/upload/")';
+                 
+               $("body").on('click', '#org_Logo_UploadBtn', function (e){
+                 e.preventDefault();
+                 let $modal = $('#imageUploadModal');
+                 let modalBody = $('#UploadModalBody');
+                  modalBody.html('<input type="file" name="orgLogo" class="InputImageBtn" id="upload_image" style="display: none;" /><div class="row"><div class="col-md-8"><img src="" id="ShowImage" class="img-fluid" /></div></div>');
+                  $('.InputImageBtn').trigger('click');
+         
+                  let crop_image = document.getElementById('ShowImage');
+                  let cropper;
+                 $('#upload_image').change(function(event){
+                 let files = event.target.files;
+                 let done = function(url){
+                 crop_image.src = url;
+                 $modal.modal('show');
+                 };
+                 if(files && files.length > 0)
+                 {
+                 let reader = new FileReader();
+                 reader.onload = function(event)
+                 {
+                 done(reader.result);
+                 };
+                 reader.readAsDataURL(files[0]);
+                 }
+                 });
+                 $modal.on('shown.bs.modal', function() {
+                 cropper = new Cropper(crop_image, {
+                 aspectRatio: 1,
+                 viewMode: 3,
+                 preview:'.preview'
+                 });
+                 }).on('hidden.bs.modal', function(){
+                 cropper.destroy();
+                 cropper = null;
+                 });
+                  
+               $('#CropAndUploadBtn').click(function(){
+                let canvas = cropper.getCroppedCanvas({
+                 width:400,
+                 height:400
+                  });
+                canvas.toBlob(function(blob){
+                 let url = URL.createObjectURL(blob);
+                 let reader = new FileReader();
+                 reader.readAsDataURL(blob);
+                 reader.onloadend = function(){
+                 let base64data = reader.result; 
+                $.ajax({
+                      url:'@Url.Action("UploadProfile","Manage", new { Area = "Profile" })',
+                      method:'POST',
+                      data:{'image':base64data },
+                success:function(data){
+                          
+                                if (data.success == true){
+                                  $('#profileImg').attr("src",""+baseUrl+data.filePath+"");
+                                  
+                                  $modal.modal('hide'); 
+                                  
+                                   toastr.success(''+data.msg+'', '', {positionClass: 'md-toast-top-center'});$('#toast-container').attr('class','md-toast-top-center');
+                                }
+                                
+                                }
+                                
+              
+              });
+              };
+               });
+                });
+               });     
+             
+             
+       });
+</script>
+}

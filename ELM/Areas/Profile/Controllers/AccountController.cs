@@ -114,7 +114,7 @@ public class AccountController : Controller
                 var user = new AppUser();
                 
                 user.DisplayName = model.DisplayName;
-                user.UserName = model.Email;
+                user.UserName = model.DisplayName;
                 user.Email = model.Email;
                 var result = await _userManager.CreateAsync(user, model.Password);
 
