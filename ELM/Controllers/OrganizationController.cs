@@ -1,6 +1,7 @@
 using Autofac;
 using ELM.Areas.Identity.Data;
 using ELM.Models;
+using ELM.Organization.BusinessObjects;
 using ELM.Users.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -77,7 +78,9 @@ public class OrganizationController : Controller
             
           if (Id != 0 && model.OwnerId == _userManager.GetUserId(HttpContext.User))
           { 
-              model.OrganizationLoadData();
+              
+               model.OrganizationLoadData();
+               model.Users = _userManager.Users.ToList();
               return View(model);
              
           } 
@@ -96,6 +99,46 @@ public class OrganizationController : Controller
        
     }
 
+    [HttpPost, ValidateAntiForgeryToken]
+    public  IActionResult Step2(OrganizationSetupModel model)
+    {
+
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                model.Resolve(_scope);
+            
+                var members = new List<Member>();
+                foreach (var memberEmail in model.SeEmailLists)
+                { 
+                    var userId =  _userManager.FindByEmailAsync(memberEmail).Result.Id.ToString();
+                    members.Add(new Member()
+                    {
+                        UserId =  userId
+                    });
+                }
+
+                model.UsersId = members;
+                model.InviteMember();
+                return RedirectToAction("Index",  new { Id = model.Id });
+            }
+        }
+        catch (Exception ex)
+        { 
+            _logger.LogError(ex, ex.Message);
+
+            TempData["ResponseMessage"] = "There was a problem in Member invite.";
+            TempData["ResponseType"] = ResponseTypes.Danger; 
+            
+            return View(model);
+           
+        }
+        return View(model);
+
+        
+    }
+    
     [HttpPost]
     public IActionResult UploadLogo()
     {

@@ -23,11 +23,11 @@
             <div class="card mt-3" style="width: 100px; border-radius: 5px;">
               @if (Model.ProfileImage != null)
               {
-                <img id="profileImg" src="~/upload/@Model.ProfileImage" class="mt-3" style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
+                <img id="profileImg" src="~/upload/@Model.ProfileImage"  style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
               }
               else
               {
-                <img id="profileImg" src="~/img/profile-avatar.png" class="mt-3" style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
+                <img id="profileImg" src="~/img/profile-avatar.png"  style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
               }
              
             </div>
@@ -38,7 +38,7 @@
           <div style="text-align: center;">
             <div id="uploadBtn" class="mb-2"></div>
             
-            <h4 class="mb-3 font-weight-bold"><strong>Welcome! @Model.UserName</strong></h4>
+            <h4 class="mb-3 font-weight-bold"><strong>Welcome! @Model.DisplayName</strong></h4>
             <span> @Model.Email</span>
 
           </div>
@@ -49,99 +49,147 @@
         </div> 
       </div> 
       <br>
-          
-      <!-- Grid row -->
-      <div class="row  justify-content-center">
-        <!-- Card content -->
-        <div class=" card col-md-12">
-          <div class="card-body card-body-cascade text-center">
-        
-            <!-- Edit Form -->
-            <form asp-area="Profile" asp-controller="Manage" asp-action="Index"  method="post" asp-antiforgery="true">
-              <!-- First row -->
-        
-                   
-              <div class="row">
-               <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <!-- First column -->
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input asp-for="FirstName" type="text" id="form1" class="form-control validate" value="@Model.FirstName" disabled>
-                    <label for="form1" data-error="wrong" data-success="right">First Name</label>
-                    <span asp-validation-for="FirstName" class="text-danger" style="font-size: 15px;"></span>
-                  </div>
-                </div>
-                <!-- Second column -->
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input type="text" asp-for="LastName" id="form2" class="form-control validate" value="@Model.LastName">
-                    <label for="form2" data-error="wrong" data-success="right">Last Name</label>
-                    <span asp-validation-for="LastName" class="text-danger" style="font-size: 15px;"></span>
-                  </div>
-                </div>
-              </div>
-              <!-- First row -->
-        
-              <!-- First row -->
-              <div class="row">
-                <!-- First column -->
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input type="text" asp-for="UserName" id="form81" class="form-control validate" value="@Model.UserName">
-                    <label for="form81" data-error="wrong" data-success="right">User Name</label>
-                    <span asp-validation-for="UserName" class="text-danger" style="font-size: 15px;"></span>
-                  </div>
-                </div>
-        
-                <!-- Second column -->
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input type="text" id="form82" class="form-control validate" value="@Model.PhoneNumber">
-                    <label asp-for="PhoneNumber" for="form82" data-error="wrong" data-success="right">Phone number</label>
-                    <span asp-validation-for="PhoneNumber" class="text-danger" style="font-size: 15px;"></span>
-                  </div>
-                </div>
-              </div>
-              <!-- First row -->
-        
-              <!-- Second row -->
-              <div class="row">
-        
-                <!-- First column -->
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input asp-for="Email" type="email" id="form76" class="form-control validate" value="@Model.Email">
-                    <label for="form76">Email address</label>
-                    <span asp-validation-for="Email" class="text-danger" style="font-size: 15px;"></span>
-                  </div>
-                </div>
-                <!-- Second column -->
-        
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input asp-for="Address" type="text" id="form77" class="form-control validate" value="@Model.Address">
-                    <label for="form77" data-error="wrong" data-success="right">Address</label>
-                    <span asp-validation-for="Address" class="text-danger" style="font-size: 15px;"></span>
-                  </div>
-                </div>
-              </div>
-              <!-- Second row -->
+         
+    <div class="row  justify-content-center">
+      
+      <div class="card col-md-12">
 
-              <!-- Fourth row -->
-              <div class="row">
-                <div class="col-md-12 text-center my-4" id="updateBtn">
-                  
-                </div>
-              </div>
-              <!-- Fourth row -->
-        
-            </form>
-            <!-- Edit Form -->
-        
+        <div class="classic-tabs">
+
+          <!-- Nav tabs -->
+          <div class="tabs-wrapper">
+            <ul class="nav aqua-gradient" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link waves-light active waves-effect waves-light" data-toggle="tab" href="#panel71"
+                   role="tab"><i class="fas fa-user fa-2x" aria-hidden="true"></i><br> Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel72" role="tab">
+                  <i
+                    class="fas fa-cog fa-2x" aria-hidden="true"></i><br> Setting</a>
+              </li>
+              
+            </ul>
           </div>
-          <!-- Card content -->
+
+          <!-- Tab panels -->
+
+          <div class="tab-content ">
+
+            <!-- Panel 1 -->
+            <div class="tab-pane fade in show active" id="panel71" role="tabpanel">
+
+              <div class="card-body card-body-cascade text-center">
+
+                <!-- Edit Form -->
+                <form asp-area="Profile" asp-controller="Manage" asp-action="Index" method="post" asp-antiforgery="true">
+                  <!-- First row -->
+
+
+                  <div class="row">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <!-- First column -->
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input asp-for="FirstName" type="text" id="form1" class="form-control validate" value="@Model.FirstName" disabled>
+                        <label for="form1" data-error="wrong" data-success="right">First Name</label>
+                        <span asp-validation-for="FirstName" class="text-danger" style="font-size: 15px;"></span>
+                      </div>
+                    </div>
+                    <!-- Second column -->
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input type="text" asp-for="LastName" id="form2" class="form-control validate" value="@Model.LastName">
+                        <label for="form2" data-error="wrong" data-success="right">Last Name</label>
+                        <span asp-validation-for="LastName" class="text-danger" style="font-size: 15px;"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- First row -->
+
+                  <!-- First row -->
+                  <div class="row">
+                    <!-- First column -->
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input type="text" asp-for="DisplayName" id="form81" class="form-control validate" value="@Model.DisplayName">
+                        <label for="form81" data-error="wrong" data-success="right">User Name</label>
+                        <span asp-validation-for="DisplayName" class="text-danger" style="font-size: 15px;"></span>
+                      </div>
+                    </div>
+
+                    <!-- Second column -->
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input type="text" id="form82" asp-for="PhoneNumber" class="form-control validate" value="@Model.PhoneNumber">
+                        <label asp-for="PhoneNumber" for="form82" data-error="wrong" data-success="right">Phone number</label>
+                        <span asp-validation-for="PhoneNumber" class="text-danger" style="font-size: 15px;"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- First row -->
+
+                  <!-- Second row -->
+                  <div class="row">
+
+                    <!-- First column -->
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input asp-for="Email" type="email" id="form76" class="form-control validate" value="@Model.Email">
+                        <label for="form76">Email address</label>
+                        <span asp-validation-for="Email" class="text-danger" style="font-size: 15px;"></span>
+                      </div>
+                    </div>
+                    <!-- Second column -->
+
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input asp-for="Address" type="text" id="form77" class="form-control validate" value="@Model.Address">
+                        <label for="form77" data-error="wrong" data-success="right">Address</label>
+                        <span asp-validation-for="Address" class="text-danger" style="font-size: 15px;"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Second row -->
+
+                  <!-- Fourth row -->
+                  <div class="row">
+                    <div class="col-md-12 text-center my-4" id="updateBtn">
+
+                    </div>
+                  </div>
+                  <!-- Fourth row -->
+
+                </form>
+                <!-- Edit Form -->
+
+              </div>
+
+
+
+            </div>
+            <!-- Panel 1 -->
+
+            <!-- Panel 2 -->
+            <div class="tab-pane fade" id="panel72" role="tabpanel">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+                doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur.
+                Tempora, placeat ratione porro voluptate odit minima.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+                doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur.
+                Tempora, placeat ratione porro voluptate odit minima.</p>
+            </div>
+            <!-- Panel 2 -->
+            
+            <!-- Panel 4 -->
+          </div>
         </div>
       </div>
+      
+      </div>
+
+    <!-- Grid row -->
+     
     </div>
   </div>
 <partial name="_imgUploadModal"/>

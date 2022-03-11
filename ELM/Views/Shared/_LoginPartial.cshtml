@@ -83,18 +83,19 @@
                                 width="36"
                                 alt="Black and White Portrait of a Man"
                                 loading="lazy"/>
-                            }
+                            } 
+              <span class="clearfix d-none d-sm-inline-block"> @profile.DisplayName</span>
+                                                                                   
             }
             
             
-            <span class="clearfix d-none d-sm-inline-block"> @User.Identity?.Name</span>
+           
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 
             <a class="dropdown-item" asp-area="Profile" asp-controller="Manage" asp-action="Index" title="Manage">My account</a>
-            <form class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})">
-              <button type="submit" class=" btn btn-link ">Logout</button>
-            </form>
+            <a class="dropdown-item" asp-area="Profile" asp-controller="Account" asp-action="LogOut" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})" title="Logout">Logout</a>
+            
           </div>
         </li>
 

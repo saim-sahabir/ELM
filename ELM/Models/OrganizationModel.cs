@@ -10,6 +10,7 @@ public class OrganizationModel
 {
 
     private IOrganizationServices _organizationServices;
+    private IOrgMemberServices _memberServices;
     private ILifetimeScope _scope;
 
     public OrganizationModel()
@@ -17,15 +18,17 @@ public class OrganizationModel
         
     }
     
-    public OrganizationModel(IOrganizationServices organizationServices)
+    public OrganizationModel(IOrganizationServices organizationServices, IOrgMemberServices memberServices)
     {
         _organizationServices = organizationServices;
+        _memberServices = memberServices;
     }
     
     public void Resolve(ILifetimeScope scope)
     {
         _scope = scope;
         _organizationServices = _scope.Resolve<IOrganizationServices>();
+        _memberServices = _scope.Resolve<IOrgMemberServices>();
     }
     
     
@@ -64,7 +67,18 @@ public class OrganizationModel
         };
         
         Id = _organizationServices.CreateOrganization(organizationData);
-         
+
+        var memberData = new Member()
+        {
+          OrgId = Id,
+          UserId = OwnerId,
+          Role = "Owner",
+          Date = DateTime.Today,
+          IsActive = true,
+          Status = "Accept"
+          
+        };
+        _memberServices.AddMember(memberData);
 
     }
 

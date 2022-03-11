@@ -53,5 +53,25 @@ public class OrganizationService: IOrganizationServices
           _organizationUnitOfWork.Save();
 
       }
-    
+
+      public List<SetupOrganaization> LoadOrgListByOwnerId(string ownerId)
+      {
+         var organizationsList = _organizationUnitOfWork.Organization.LoadOrganizationsByOwner(ownerId);
+          List <SetupOrganaization> organaization = new List<SetupOrganaization>();
+          foreach (var item in organizationsList)
+          {
+               organaization.Add(new SetupOrganaization()
+                        {
+                           Id = item.Id,
+                           Name = item.Name,
+                           Email = item.Email,
+                           Logo = item.Logo
+
+                        });
+          }
+         
+
+          return  organaization;
+      }
+      
 }

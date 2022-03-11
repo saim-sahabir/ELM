@@ -6,4 +6,5 @@ namespace ELM.Organization.Repositories;
 public interface IOrganizationRepository : IRepository<Organizations, int>
 {
     Organizations GetOrganizationsBySetup(int id, string userId);
+    List<Organizations> LoadOrganizationsByOwner(string ownerId);
 }

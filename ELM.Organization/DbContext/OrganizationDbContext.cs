@@ -28,16 +28,16 @@ public class OrganizationDbContext : Microsoft.EntityFrameworkCore.DbContext, IO
             .HasMany(e => e.ItemsList)
             .WithOne(i => i.Expenses);
         
-        builder.Entity<Organizations>()
-            .HasMany(o => o.ExpensesList)
-            .WithOne(i => i.Organizations);
-        
-        builder.Entity<Organizations>()
-            .HasMany(e => e.Deposits)
-            .WithOne(i => i.Organizations);
-        builder.Entity<Organizations>()
-            .HasMany(m => m.MembersList )
-            .WithOne(i => i.Organizations);
+        // builder.Entity<Organizations>()
+        //     .HasMany(o => o.ExpensesList)
+        //     .WithOne(i => i.Organizations);
+        //
+        // builder.Entity<Organizations>()
+        //     .HasMany(e => e.Deposits)
+        //     .WithOne(i => i.Organizations);
+        // builder.Entity<Organizations>()
+        //     .HasMany(m => m.MembersList )
+        //     .WithOne(i => i.Organizations);
     }
 
     public DbSet<Organizations> Organizations { get; set; }

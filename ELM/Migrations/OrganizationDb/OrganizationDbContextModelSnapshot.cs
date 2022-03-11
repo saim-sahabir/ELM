@@ -48,9 +48,6 @@ namespace ELM.Migrations.OrganizationDb
                     b.Property<int>("OrgId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrganizationsId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PaymentMethod")
                         .HasColumnType("nvarchar(max)");
 
@@ -61,8 +58,6 @@ namespace ELM.Migrations.OrganizationDb
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrganizationsId");
 
                     b.ToTable("Deposits");
                 });
@@ -123,9 +118,6 @@ namespace ELM.Migrations.OrganizationDb
                     b.Property<int>("OrgId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrganizationsId")
-                        .HasColumnType("int");
-
                     b.Property<string>("OwnerId")
                         .HasColumnType("nvarchar(max)");
 
@@ -133,8 +125,6 @@ namespace ELM.Migrations.OrganizationDb
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrganizationsId");
 
                     b.ToTable("Expenses");
                 });
@@ -224,8 +214,8 @@ namespace ELM.Migrations.OrganizationDb
                     b.Property<int>("OrgId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrganizationsId")
-                        .HasColumnType("int");
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
@@ -235,20 +225,7 @@ namespace ELM.Migrations.OrganizationDb
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrganizationsId");
-
                     b.ToTable("OrgMembers");
-                });
-
-            modelBuilder.Entity("ELM.Organization.Entities.Deposit", b =>
-                {
-                    b.HasOne("ELM.Organization.Entities.Organizations", "Organizations")
-                        .WithMany("Deposits")
-                        .HasForeignKey("OrganizationsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Organizations");
                 });
 
             modelBuilder.Entity("ELM.Organization.Entities.ExpenseItems", b =>
@@ -264,38 +241,7 @@ namespace ELM.Migrations.OrganizationDb
 
             modelBuilder.Entity("ELM.Organization.Entities.Expenses", b =>
                 {
-                    b.HasOne("ELM.Organization.Entities.Organizations", "Organizations")
-                        .WithMany("ExpensesList")
-                        .HasForeignKey("OrganizationsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Organizations");
-                });
-
-            modelBuilder.Entity("ELM.Organization.Entities.OrgMembers", b =>
-                {
-                    b.HasOne("ELM.Organization.Entities.Organizations", "Organizations")
-                        .WithMany("MembersList")
-                        .HasForeignKey("OrganizationsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Organizations");
-                });
-
-            modelBuilder.Entity("ELM.Organization.Entities.Expenses", b =>
-                {
                     b.Navigation("ItemsList");
-                });
-
-            modelBuilder.Entity("ELM.Organization.Entities.Organizations", b =>
-                {
-                    b.Navigation("Deposits");
-
-                    b.Navigation("ExpensesList");
-
-                    b.Navigation("MembersList");
                 });
 #pragma warning restore 612, 618
         }

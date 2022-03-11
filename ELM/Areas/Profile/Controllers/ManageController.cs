@@ -46,6 +46,7 @@ public class ManageController : Controller
         model.PhoneNumber = userData.PhoneNumber;
         model.ProfileImage = userData.ProfileImage;
         model.UserName = userData.UserName;
+        model.DisplayName = userData.DisplayName;
         return View(model);
     }
  
@@ -64,7 +65,7 @@ public class ManageController : Controller
                      userData.FirstName = model.FirstName;
                      userData.LastName = model.LastName;
                      userData.Address = model.Address;
-                     userData.UserName = model.UserName;
+                     userData.DisplayName = model.DisplayName;
                      userData.PhoneNumber = model.PhoneNumber;
                      IdentityResult  result = await _userManager.UpdateAsync(userData);
                     if (result.Succeeded)

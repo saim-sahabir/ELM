@@ -16,7 +16,8 @@ public class Organizations: IEntity<int>
     public string? Status { get; set; }
     public DateTime DateTime { get; set; }
     public bool IsActive { get; set; }
-    public IList<OrgMembers> MembersList { get; set; }
-    public IList<Expenses> ExpensesList { get; set; }
-    public IList<Deposit> Deposits { get; set; }
+    
+    //public IList<OrgMembers> MembersList { get; set; }
+   // public IList<Expenses> ExpensesList { get; set; }
+   // public IList<Deposit> Deposits { get; set; }
 }

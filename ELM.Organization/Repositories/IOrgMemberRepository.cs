@@ -1,6 +1,9 @@
+using ELM.Organization.Entities;
+using EML.DataAccess;
+
 namespace ELM.Organization.Repositories;
 
-public interface IOrgMemberRepository
+public interface IOrgMemberRepository : IRepository<OrgMembers, int>
 {
     
 }

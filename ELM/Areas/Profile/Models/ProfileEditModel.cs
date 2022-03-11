@@ -17,9 +17,9 @@ public class ProfileEditModel
     public string? Email { get; set; }
     public string? Address { get; set; }
     public string? ProfileImage { get; set; }
-    [Required]
     public string? UserName { get; set; }
-
+    [Required]
+    public string? DisplayName { get; set; }
     
    
     

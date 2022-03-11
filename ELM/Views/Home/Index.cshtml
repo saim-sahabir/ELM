@@ -1,8 +1,119 @@
-﻿@{
+﻿@using ELM.Users.Entity
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
- <section class=" intro-2  white mode" >
+@if (SignInManager.IsSignedIn(User))
+{
+  @model RecentOrgModel
+  
+  
+  <section class="section card mb-5">
+
+    <div class="card-body">
+      <div class="container-fluid">
+        <!-- Section heading -->
+        
+        <!-- Grid row -->
+        <div class="col-md-12">
+          
+          <h5 class="my-4 dark-grey-text font-weight-bold">Yours Organization </h5>
+          <hr/>
+          
+          @if (Model.OrgList.Count != 0)
+          {
+            <div class="row pt-3 pb-5">
+
+              @foreach (var item in Model.OrgList)
+              {
+
+
+                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+
+                  <!-- Card -->
+                  <div class="card card-cascade cascading-admin-card">
+
+                    <!-- Card Data -->
+                    <div class="admin-up" style="margin-bottom: -25px;">
+                      <div class="card" style="width: 70px; border-radius: 5px;">
+                        @if (item.Logo != null)
+                        {
+                          <img id="profileImg" src="~/upload/@item.Logo" class="" style="width: 70px; border-radius: 5px; padding: 3px; " alt=" image">
+                        }
+                        else
+                        {
+                          <img id="profileImg" src="~/img/org.png" class="" style="width: 70px; border-radius: 5px; padding: 3px; " alt=" image">
+
+                        }
+
+
+                      </div>
+                      <div class="data" style="margin-top: -40px;">
+                        <p class="text-uppercase">Member</p>
+                        <h5 class="font-weight-bold dark-grey-text" style="margin-top: -40px;"><i class="fas fa-users " style="color: grey"></i>(1)</h5>
+                      </div>
+                    </div>
+                    <hr/>
+                    <!-- Card content -->
+                    <a asp-area="" asp-controller="Organization" asp-action="Index" asp-route-id="@item.Id">
+                      <div class="card-body card-body-cascade" style="margin-top: -28px;">
+                        <div class="mb-3">
+                          <h6 class="font-weight-bold dark-grey-text">@item.Name</h6>
+                        </div>
+                        <p class="card-text" style="font-size: small;">@item.Email</p>
+                      </div>
+                    </a>
+
+                  </div>
+                  <!-- Card -->
+
+                </div>
+
+              }
+
+            </div>
+          }
+          else
+          {
+            <div class="row justify-content-center">
+                        
+                        <div class="col-md-3 ">
+                          <img src="~/img/setup_org.svg" class="img-fluid"/>
+                         
+                        </div>
+                       
+                      </div>
+                      
+                       <div class="pb-5" style="text-align: center;">
+                         <h5 class="my-4 dark-grey-text ">No organization found</h5>
+                         <a class="btn pb-3 aqua-gradient" asp-area="" asp-controller="Organization" asp-action="Create"><i class="fas fa-plus-circle "></i> Setup a new organization</a>
+                         </div>
+            
+          }
+          
+          
+          
+        </div>
+
+          </div>
+    </div>
+      
+  </section>
+  
+  
+  
+  
+  
+}
+else
+{
+  
+
+<section class=" intro-2  white mode" >
       <div class="mask mode">
         <div class="container h-100 d-flex justify-content-center align-items-center">
           <div class="row flex-center pt-5 mt-3">
@@ -287,3 +398,12 @@
       <!--Section: Testimonials v.4-->
      
      
+
+  
+}
+
+
+
+
+
+

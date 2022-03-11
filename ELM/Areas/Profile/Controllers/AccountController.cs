@@ -70,6 +70,13 @@ public class AccountController : Controller
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                
+                
+               
+                    // var user =  UserManager.FindByEmail(email);
+                    // return await PasswordSignInAsync(user.UserName,password,isPersistent,shouldLockout);
+
+
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
@@ -114,7 +121,7 @@ public class AccountController : Controller
                 var user = new AppUser();
                 
                 user.DisplayName = model.DisplayName;
-                user.UserName = model.DisplayName;
+                user.UserName = model.Email;
                 user.Email = model.Email;
                 var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -197,8 +204,27 @@ public class AccountController : Controller
     }
 
    
-    */ 
-       public  IActionResult ForgetPassword()
+    */
+
+ public async Task<IActionResult> LogOut(string returnUrl = null)
+ {
+     await _signInManager.SignOutAsync();
+     _logger.LogInformation("User logged out.");
+     if (returnUrl != null)
+     {
+         return LocalRedirect(returnUrl);
+     }
+     else
+     {
+         // This needs to be a redirect so that the browser performs a new
+         // request and the identity for the user gets updated.
+         return RedirectToAction();
+     }
+
+ }
+
+
+ public  IActionResult ForgetPassword()
           {
               return View();
           }

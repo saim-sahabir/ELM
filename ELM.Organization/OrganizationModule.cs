@@ -35,6 +35,15 @@ public class OrganizationModule : Module
         
          builder.RegisterType<OrganizationService>().As<IOrganizationServices>()
             .InstancePerLifetimeScope();
+         
+         builder.RegisterType<OrgMemberRepository>().As<IOrgMemberRepository>()
+             .InstancePerLifetimeScope();
+         
+         builder.RegisterType<OrgMemberUnitOfWork>().As<IOrgMemberUnitOfWork>()
+             .InstancePerLifetimeScope();
+         
+         builder.RegisterType<OrgMemberServices>().As<IOrgMemberServices>()
+             .InstancePerLifetimeScope();
         
         base.Load(builder);
     } 

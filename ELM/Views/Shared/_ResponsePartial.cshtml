@@ -1,3 +1,5 @@
+
+
 @{
     string? message = TempData["ResponseMessage"] as string;
 
@@ -20,7 +22,7 @@
             </script>
     }
 
-    @*<div class="alert alert-@(type.ToString().ToLower())" role="alert">
+   <div class="alert alert-@(type.ToString().ToLower())" role="alert">
         @message;
-    </div>    *@
+    </div>    
 }

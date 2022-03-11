@@ -20,4 +20,9 @@ public class OrganizationRepository : Repository<Organizations, int> ,  IOrganiz
         return _context.Organizations.Where(x => x.Id == id && x.OwnerId == userId).AsNoTracking().First();
     }
     
+    public List<Organizations> LoadOrganizationsByOwner(string ownerId)
+    {
+        return _context.Organizations.Where(x => x.OwnerId == ownerId).ToList();
+    }
+    
 }

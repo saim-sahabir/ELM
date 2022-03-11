@@ -1,6 +1,166 @@
 
+ <section class="section card mb-5">
 
+    <div class="card-body">
+      <div class="container-fluid">
+        <!-- Section heading -->
+        <div class="row justify-content-center">
+          <div class="  col-md-12 pb-4">     
+                      
+                    
+                    <!-- Avatar -->
+                             
+                    <div class="d-flex justify-content-center">
+                      <div class="card" style="width: 100px; border-radius: 5px;">
+                          <img id="profileImg" src="~/img/org.png"  style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
+                       
+                      </div>
+                    </div>
+                                 
+                    
+                    <!-- Name -->
+                    <div style="text-align: center;">
+                      <div id="uploadBtn" class="mb-2"></div>
+                      
+                      <h4 class="mb-3 font-weight-bold"><strong>Welcome! My Org</strong></h4>
+                      
+          
+                    </div>
+                      <div class="col-md-2">
+                        <button class="btn aqua-gradient btn-sm btn-rounded waves-effect waves-light" id="EditBtn"><i class="fas fa-edit"></i> Edit</button>
+                        <div id="exitBtn"></div>
+                     </div>
+                  </div>
+        </div>
+        <!-- Grid row -->
+        <div class="col-12">
+        
+                    <div class="classic-tabs">
+        
+                      <!-- Nav tabs -->
+                      <div class="tabs-wrapper">
+                        <ul class="nav aqua-gradient" role="tablist">
+                          <li class="nav-item">
+                            <a class="nav-link waves-light active waves-effect waves-light" data-toggle="tab" href="#panel36"
+                              role="tab"><i class="fas fa-users "></i> Members</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel37" role="tab"><i class="fas fa-money-bill-alt"></i> Deposit</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel38" role="tab"><i class="fas fa-money-check-alt"></i> Expense</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel39" role="tab"><i class="fas fa-file-chart-pie"></i> Reports</a>
+                          </li>
+                           <li class="nav-item">
+                             <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel40" role="tab"><i class="fas fa-cog"></i> Setting</a>
+                             </li>
+                        </ul>
+                      </div>
+        
+                      <!-- Tab panels -->
+                      <div class="tab-content ">
+                        <!-- Panel 1 -->
+                        <div class="tab-pane fade in show active" id="panel36" role="tabpanel">
+                          <div class="col-md-12">
+                                    <hr/>
+                                    <div class="row justify-content-center">
+                                      
+                                      <div class="col-md-2 ">
+                                        <img src="~/img/no_data.svg" class="img-fluid"/>
+                                       
+                                      </div>
+                                     
+                                    </div>
+                                    
+                                     <div class="pb-5" style="text-align: center;">
+                                       <h5 class="my-4 dark-grey-text ">No organization found</h5>
+                                       <a class="btn pb-3 aqua-gradient" asp-area="" asp-controller="Organization" asp-action="Create"><i class="fas fa-plus-circle "></i> Setup a new organization</a>
+                                       </div>
+                                    
+                                  </div>
+                          
+                        </div>
+                        <!-- Panel 1 -->
+        
+                        <!-- Panel 2 -->
+                        <div class="tab-pane fade" id="panel37" role="tabpanel">
+                           <div class="col-md-12">
+                                                             <hr/>
+                                                             <div class="row justify-content-center">
+                                                               
+                                                               <div class="col-md-2 ">
+                                                                 <img src="~/img/no_data.svg" class="img-fluid"/>
 
+                                                               </div>
+                                                             </div>
+                                                             
+                                                              <div class="pb-5" style="text-align: center;">
+                                                                <h5 class="my-4 dark-grey-text ">No data found</h5><a class="btn pb-3 aqua-gradient" href="#" id="AddDeposit"><i class="fas fa-plus-circle "></i> Add new deposit</a>
+                                                                </div>
+                           </div>
+                        </div>
+                        <!-- Panel 2 -->
+        
+                        <!-- Panel 3 -->
+                        <div class="tab-pane fade" id="panel38" role="tabpanel">
+                          <div class="col-md-12">
+                                                                                       <hr/>
+                                                                                       <div class="row justify-content-center">
+                                                                                         
+                                                                                         <div class="col-md-2 ">
+                                                                                           <img src="~/img/no_data.svg" class="img-fluid"/>
+                                                                                          
+                                                                                         </div>
+                                                                                        
+                                                                                       </div>
+                                                                                       
+                                                                                        <div class="pb-5" style="text-align: center;">
+                                                                                          <h5 class="my-4 dark-grey-text ">No data found</h5>
+                                                                                          <a class="btn pb-3 aqua-gradient" href="#" id="AddExpense"><i class="fas fa-plus-circle "></i> Add new expense</a>
+                                                                                          </div>
+                                                                                       
+                                                                                     </div>
+                        </div>
+                        <!-- Panel 3 -->
+        
+                        <!-- Panel 4 -->
+                        <div class="tab-pane fade" id="panel39" role="tabpanel">
+                          <div class="col-md-12">
+                            <hr/>
+                            <div class="row justify-content-center">
+                                                                                                                   
+                              <div class="col-md-2 ">
+                                <img src="~/img/no_data.svg" class="img-fluid"/>
+                                                                                                                    
+                              </div>
+                                                                                                                  
+                            </div>
+                                                                                                                 
+                            <div class="pb-5" style="text-align: center;">
+                              <h5 class="my-4 dark-grey-text ">No data found</h5>
+                              <a class="btn pb-3 aqua-gradient" asp-area="" asp-controller="Organization" asp-action="Create"><i class="fas fa-plus-circle "></i> Setup a new organization</a>
+                            </div>
+                                                                                                                 
+                          </div>
+                        </div>
+                        
+                        <!-- Panel 4 -->
+                      </div>
+        
+                    </div>
+                    <!-- Grid column -->
+        
+                  </div>
+        
+        
+
+          </div>
+    </div>
+      
+  </section>
+  
 
 
 

@@ -15,5 +15,5 @@ public class Expenses : IEntity<int>
     public int OrgId { get; set; }
     public bool IsActive { get; set; }
     public IList<ExpenseItems> ItemsList { get; set; }
-    public Organizations Organizations { get; set; }
+    //public Organizations Organizations { get; set; }
 }

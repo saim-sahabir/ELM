@@ -10,4 +10,5 @@ public interface IOrganizationServices
      Organizations GetOrganizationSetup(int id, string ownerId);
 
      void LogoUpdate(SetupOrganaization setupOrganaization);
+     List<SetupOrganaization> LoadOrgListByOwnerId(string ownerId);
 }
