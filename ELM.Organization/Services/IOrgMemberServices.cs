@@ -6,4 +6,5 @@ public interface IOrgMemberServices
 {
     void AddMember(Member member);
     void AddMemberList(List<Member> memberList);
+    List<Member> GetMemberByOrg(int orgId);
 }

@@ -25,9 +25,42 @@ public class OrganizationController : Controller
         _hostingEnvironment = hostEnvironment;
     }
     
-    public IActionResult Index()
-    {
-        return View();
+    public IActionResult Index(string id)
+    { 
+        var model = _scope.Resolve<OrganizationModel>();
+        var memberModel = _scope.Resolve<MemberModel>();
+        if (id != null)
+        {
+            memberModel.GetMemberByOrg(int.Parse(id));
+            var memberList = new List<MemberModel>();
+            foreach (var item in memberModel.Members)
+            {
+                memberList.Add(new MemberModel()
+                {
+                    MemberId = item.Id,
+                    UserId = item.UserId,
+                    Status = item.Status,
+                    Role = item.Role,
+                    OrgId = item.OrgId,
+                    Image = _userManager.FindByIdAsync(item.UserId).Result.ProfileImage,
+                    Name = _userManager.FindByIdAsync(item.UserId).Result.DisplayName,
+                    Email = _userManager.FindByIdAsync(item.UserId).Result.Email
+                    
+                });
+            }
+
+
+            model.MemberInfo = memberList;
+            model.GetOrganization(int.Parse(id));
+            var checkMember = model.MemberInfo.Any(x => x.UserId == _userManager.GetUserId(HttpContext.User));
+            if(checkMember = false) 
+            {
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+            return View(model);
+        }
+
+        return RedirectToAction("Index", "Home", new { area = "" });
     }
     
     [HttpGet]

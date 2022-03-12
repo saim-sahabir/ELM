@@ -38,7 +38,7 @@ public class AccountController : Controller
     
     // GET
     [HttpGet] 
-    public async Task<IActionResult> Login(string returnUrl = null)
+    public async Task<IActionResult> Login(string returnUrl)
     {
          var model = _scope.Resolve<LoginModel>();
             
@@ -56,13 +56,13 @@ public class AccountController : Controller
 
                 model.ReturnUrl = returnUrl;
                 
-                return View();
+                return View(model);
     }
 
      [HttpPost]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> Login(LoginModel model, string returnUrl)
         {
-            model.ReturnUrl ??= Url.Content("~/");
+            returnUrl ??= Url.Content("~/");
 
                 model.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
@@ -81,11 +81,11 @@ public class AccountController : Controller
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(model.ReturnUrl);
+                    return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {

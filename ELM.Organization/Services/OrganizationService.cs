@@ -73,5 +73,25 @@ public class OrganizationService: IOrganizationServices
 
           return  organaization;
       }
+     
+      
+      public Organizations GetOrganizations(int id)
+      {
+          var organizationsEntity = _organizationUnitOfWork.Organization.GetById(id);
+          var organizations = new Organizations();
+          organizations.Id = organizationsEntity.Id;
+          organizations.Name = organizationsEntity.Name;
+          organizations.Logo = organizationsEntity.Logo;
+          organizations.Address = organizationsEntity.Address;
+          organizations.Email = organizationsEntity.Email;
+          organizations.Phone = organizationsEntity.Phone;
+          organizations.Status = organizations.Status;
+          organizations.OwnerId = organizationsEntity.OwnerId;
+          organizations.DateTime = organizations.DateTime;
+          organizations.IsActive = organizationsEntity.IsActive;
+          return organizations;
+      }
+      
+      
       
 }

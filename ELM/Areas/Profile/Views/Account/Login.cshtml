@@ -28,7 +28,7 @@
                     <a class="p-2 m-2 fa-lg ins-ic aqua-gradient rounded"><i class="fab fa-instagram white-text"> </i></a>
                   </div>
                   <hr class="mt-4">
-                  <form asp-area="Profile" asp-controller="Account" asp-action="Login" method="post">
+                  <form asp-area="Profile" asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@Model.ReturnUrl">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="md-form">
                       <i class="fas fa-envelope prefix text-default"></i>

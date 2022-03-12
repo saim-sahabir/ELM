@@ -1,5 +1,86 @@
 
-    <!-- Sidebar navigation -->
+@if (ViewData["SideNav"]=="Organization")
+{
+  <!-- Sidebar navigation -->
+    <div id="slide-out" class="side-nav sn-bg-4 fixed">
+      <ul class="custom-scrollbar">
+        <!-- Logo -->
+        <li class="logo-sn waves-effect py-3">
+          <div class="text-center">
+            <a class="navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">
+              @if (ViewData["OrgLogo"] != null)
+              {
+                <img style="width: 50px;" class="elm-logo" src="~/upload/@ViewData["OrgLogo"]"/>
+              }
+              else
+              {
+                 <img style="width: 50px;" class="elm-logo" src="~/img/org.png"/>
+              }
+             
+            </a>
+          </div>
+        </li>
+        <!--/. Logo -->
+
+        <!--Search Form-->
+        <li>
+          <form class="search-form" role="search">
+            <div class="md-form mt-0 waves-light">
+              <input type="text" class="form-control py-2" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        <!--/.Search Form-->
+        <!-- Side navigation links -->
+        <li>
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <a asp-area="" asp-controller="Home" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-home" ></i> Back To Home</a>
+              </li>
+            <li><a style="font-size: 15px;" class="collapsible-header waves-effect arrow-r"><i style="font-size: 15px;" class="fas fa-plus-circle"></i> Create New<i style="font-size: 15px;" class="fas fa-angle-down rotate-icon"></i></a>
+              <div class="collapsible-body">
+                <ul>
+                 
+                  <li><a asp-area="" asp-controller="Expense" asp-action="Create" class="waves-effect">Expense</a>
+                  </li>
+                  <li><a asp-area="" asp-controller="Deposit" asp-action="Create" class="waves-effect">Deposit </a>
+                    </li>
+                                         
+                  </ul>
+                </div>
+              </li> 
+            
+            <!-- Simple link -->
+          
+            
+            <li>
+              <a asp-area="" asp-controller="Expense" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-users"></i> Members</a>
+            </li>
+            <li>
+              <a asp-area="" asp-controller="Expense" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-money-check-alt"></i>  Expenses</a>
+            </li>
+            <li>
+              <a asp-area="" asp-controller="Deposit" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-money-bill-alt"></i>  Deposit</a>
+            </li>
+            
+            <li>
+              <a asp-area="" asp-controller="Expense" asp-action="Index" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-money-check-alt"></i> Reports</a>
+              </li>
+            <li>
+            <a href="../modals/modals.html" style="font-size: 15px;" class="collapsible-header waves-effect"><i style="font-size: 15px;" class="fas fa-cog"></i>Settings</a>
+            </li>
+          </ul>
+        </li>
+        <!--/. Side navigation links -->
+      </ul>
+      <div class="sidenav-bg mask-strong"></div>
+    </div>
+    <!--/. Sidebar navigation -->
+
+}
+else
+{
+  <!-- Sidebar navigation -->
     <div id="slide-out" class="side-nav sn-bg-4 fixed">
       <ul class="custom-scrollbar">
         <!-- Logo -->
@@ -61,3 +142,6 @@
       <div class="sidenav-bg mask-strong"></div>
     </div>
     <!--/. Sidebar navigation -->
+
+}
+

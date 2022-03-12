@@ -1,4 +1,11 @@
+@model OrganizationModel
 
+
+@{
+    ViewData["SideNav"] = "Organization";
+    ViewData["OrgLogo"] = @Model.Logo;
+    ViewData["Title"] = @Model.Name;
+}
  <section class="section card mb-5">
 
     <div class="card-body">
@@ -12,8 +19,16 @@
                              
                     <div class="d-flex justify-content-center">
                       <div class="card" style="width: 100px; border-radius: 5px;">
-                          <img id="profileImg" src="~/img/org.png"  style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
+                        @if (Model.Logo != null)
+                        {
+                          <img id="profileImg" src="~/upload/@Model.Logo" style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
+                        }
+                        else
+                        {
+                           <img id="profileImg" src="~/img/org.png" style="width: 100px; border-radius: 5px; padding: 3px; " alt=" image">
+                        }
                        
+
                       </div>
                     </div>
                                  
@@ -22,7 +37,7 @@
                     <div style="text-align: center;">
                       <div id="uploadBtn" class="mb-2"></div>
                       
-                      <h4 class="mb-3 font-weight-bold"><strong>Welcome! My Org</strong></h4>
+                      <h4 class="mb-3 font-weight-bold"><strong>Welcome! @Model.Name</strong></h4>
                       
           
                     </div>
@@ -64,22 +79,76 @@
                         <!-- Panel 1 -->
                         <div class="tab-pane fade in show active" id="panel36" role="tabpanel">
                           <div class="col-md-12">
-                                    <hr/>
-                                    <div class="row justify-content-center">
-                                      
-                                      <div class="col-md-2 ">
-                                        <img src="~/img/no_data.svg" class="img-fluid"/>
-                                       
+                             <a class="btn btn-md aqua-gradient" href="#" style="float: right; margin-top: -10px;"><i class="fas fa-user "></i> Invite new member</a>
+                            <h4>Members</h4>
+
+                            <hr/>
+
+                            <table id="dtMaterialDesignExample" class="table table-responsive-md table-responsive-sm table-striped" cellspacing="0" width="100%">
+                              <thead>
+                              <tr>
+                                <th>Name
+                                </th>
+                                <th>Email
+                                </th>
+                                <th>Permisson
+                                </th>
+                                <th>Status
+                                </th>
+                                <th>Action
+                                </th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              @{
+                                foreach (var member in Model.MemberInfo)
+                                {
+                                  <tr>
+
+                                    <td>
+                                      @if (member.Image != null)
+                                      {<img src="~/upload/@member.Image" class="rounded-circle" alt="Black and White Portrait of a Man" loading="lazy" width="28" height="28">}
+                                      else
+                                      {<img src="~/img/profile-avatar.png" class="rounded-circle" alt="Black and White Portrait of a Man" loading="lazy" width="28" height="28">}
+                                      @member.Name </td>
+                                    <td>@member.Email</td>
+                                    <td>@member.Role</td>
+                                    <td>@member.Status</td>
+
+                                    <td>
+                                      <a class="nav-link dropdown-toggle waves-effect" href="#" id="userDropdown" data-toggle="dropdown"
+                                         aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-cog"></i> <span class="clearfix d-none d-sm-inline-block">Action</span>
+                                      </a>
+                                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="#@member.MemberId">Delete</a>
+                                        <a class="dropdown-item" href="#">Permisson</a>
                                       </div>
-                                     
-                                    </div>
-                                    
-                                     <div class="pb-5" style="text-align: center;">
-                                       <h5 class="my-4 dark-grey-text ">No organization found</h5>
-                                       <a class="btn pb-3 aqua-gradient" asp-area="" asp-controller="Organization" asp-action="Create"><i class="fas fa-plus-circle "></i> Setup a new organization</a>
-                                       </div>
-                                    
-                                  </div>
+                                    </td>
+
+                                  </tr>
+                                }
+                              }
+
+                              </tbody>
+                              <tfoot>
+                              <tr>
+                                <th>Name
+                                </th>
+                                <th>Email
+                                </th>
+                                <th>Permisson
+                                </th>
+                                <th>Status
+                                </th>
+                                <th>Action
+                                </th>
+                              </tr>
+                              </tfoot>
+                            </table>
+
+
+                          </div>
                           
                         </div>
                         <!-- Panel 1 -->
@@ -175,13 +244,19 @@
 <partial name="_CreateDepositeModal"/>
 <partial name="_CreateExpenceModal"/>
 
+@section Style
+{
+  <link rel="stylesheet" type="text/css" href="~/lib/ELM/css/addons/datatables.min.css">
+}
 
 @section Scripts
 {
-    <script>
+  <script type="text/javascript" src="~/lib/ELM/js/addons/datatables.min.js"></script>
+  
+  <script>
    $(function (){
    
-   
+    $('#dtMaterialDesignExample').DataTable();
    
    
    });

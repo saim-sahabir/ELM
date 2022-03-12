@@ -58,6 +58,31 @@ public class OrgMemberServices : IOrgMemberServices
         _orgMemberUnitOfWork.Save();
     }
 
+    public List<Member> GetMemberByOrg(int orgId)
+    {
+        var orgMember = _orgMemberUnitOfWork.OrgMember.GetByOrgId(orgId);
+        var members = new List<Member>();
+        foreach (var item in orgMember)
+        {
+             members.Add(new Member()
+                    {
+                        Id = item.Id,
+                        OrgId = item.OrgId,
+                        UserId = item.UserId,
+                        Role = item.Role,
+                        Status = item.Status,
+                        IsActive = item.IsActive,
+                        Date = item.Date
+
+
+                    });
+        }
+        
+       
+
+        return members;
+    }
+    
     
 }
 

@@ -10,40 +10,78 @@
                 <h5 class="my-4 dark-grey-text font-weight-bold">Yours Organization </h5>
               <hr/>
               
-               <div class="row">
-                
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-          
-                      <!-- Card -->
-                      <div class="card card-cascade cascading-admin-card">
-          
-                        <!-- Card Data -->
-                        <div class="admin-up" style="margin-bottom: -25px;">
-                         <div class="card" style="width: 70px; border-radius: 5px;">
-                                                   <img id="profileImg" src="/img/org.png" class="" style="width: 70px; border-radius: 5px; padding: 3px; " alt=" image">
-                                                
-                                               </div>
-                          <div class="data" style="margin-top: -40px;">
-                            <p class="text-uppercase">Member</p>
-                            <h5 class="font-weight-bold dark-grey-text" style="margin-top: -40px;"><i class="fas fa-users " style="color: grey"></i>(1)</h5>
-                          </div>
-                        </div>
-                        <hr/>
-                        <!-- Card content -->
-                        <a href="#">
-                            <div class="card-body card-body-cascade" style="margin-top: -28px;">
-                                <div class="mb-3">
-                                    <h6 class="font-weight-bold dark-grey-text"> Hello Org</h6>
-                                </div>
-                                <p class="card-text" style="font-size: small;">Hello@ogr</p>
-                            </div>
-                            </a>
-          
-                      </div>
-                      <!-- Card -->
-          
-                    </div>
-              </div>
+             
+                   <div class="master">
+                       <h2>Order</h2>
+                       <table class="table table-responsive">
+                           <tr>
+                               <td>Order No</td>
+                               <td>
+                                   <input type="text" id="orderNo" class="form-control" />
+                                   <span class="error">Order no required</span>
+                               </td>
+                               <td>Order Date</td>
+                               <td>
+                                   <input type="text" id="orderDate" class="form-control" />
+                                   <span class="error">Valid order date required (ex: MM-dd-yyyy)</span>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Description</td>
+                               <td colspan="3"> 
+                                   <textarea id="description" class="form-control"></textarea>
+                               </td>
+                           </tr>
+                       </table> 
+                   </div>
+                   <div class="details">
+                       <h2>
+                           Order items
+                       </h2>
+                       <table class="table table-responsive">
+                           <tr>
+                               <td>Category</td>
+                               <td>Product</td>
+                               <td>Quantity</td>
+                               <td>Rate</td>
+                               <td>&nbsp;</td>
+                           </tr>
+                           <tr class="mycontainer" id="mainrow">
+                               <td>
+                                   <select id="productCategory" class="pc form-control" onchange="LoadProduct(this)">
+                                       <option>Select</option>
+                                   </select>
+                                   <span class="error">Select Category</span>
+                               </td>
+                               <td>
+                                   <select id="product" class="product form-control">
+                                       <option>Select</option>
+                                   </select>
+                                   <span class="error">Select product</span>
+                               </td>
+                               <td>
+                                   <input type="text" id="quantity" class="quantity form-control" />
+                                   <span class="error">Valid quantity required</span>
+                               </td>
+                               <td>
+                                   <input type="text" id="rate" class="rate form-control" />
+                                   <span class="error">Valid rate required</span> 
+                               </td>
+                               <td>
+                                   <input type="button" id="add" value="add" style="width:80px" class="btn btn-success" />
+                               </td>
+                           </tr>
+                       </table>
+                       <div id="orderItems">
+                           <table class="table table-responsive" id="orderdetailsItems"></table>
+                           <span id="orderItemError" style="color:red"></span>
+                       </div>
+                       <div style="padding:10px 0; text-align:right">
+                           <input id="submit" type="button" value="Save Order" class="btn btn-warning" style="padding:10px 20px" />
+                       </div>
+                   </div>
+               
+               
           
             </div>
 
