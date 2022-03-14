@@ -16,19 +16,130 @@
 
             <!-- Body -->
             <div class="modal-body">
-                <div class="text-center" id="UploadModalBody">
-                </div>
-            </div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>Expense</h4>
+                                    <hr>
+
+                                    <!-- Grid column -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="md-form md-outline">
+                                                <input type="text" id="f2" class="form-control">
+                                                <label for="f2" class="">Expense name * </label>
+                                            </div>
+
+                                        </div>
+                                        <!-- Grid column -->
+
+                                        <!-- Grid column -->
+                                        <div class="col-md-6">
+
+                                            <div class="md-form md-outline">
+                                                <input placeholder="Selected date" type="text" value="@DateTime.Today" id="date-picker-example" class="form-control datepicker picker__input" readonly="" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="date-picker-example_root">
+                                                <label for="f2" class="">Date *</label>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="col-md-12" style="margin-top: 0.5rem;">
+                                            <div class="md-form md-outline">
+                                                <textarea type="text"  id="form101" class="md-textarea form-control" rows="3"></textarea>
+                                                <label for="f2" class="">Diteals:</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Grid column -->
+
+
+                                    <hr>
+
+                                    <h4>Expense Items</h4>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                        
+                                            <div class="md-form md-outline" style="margin-top: 0.5rem;">
+                                                <input type="text" name="ItemName" id="ItemName" class="ExpanseItem form-control">
+                                                <label for="f2" class="">Name * </label>
+                                                 <div id="valid-for-ItemName"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" style="">
+                                                                            
+                                                <div class="md-form md-outline" style="margin-top: 0.5rem;">
+                                                    <input type="number" name="Quantity" id="ItemQuantity" class="ExpanseItem form-control">
+                                                    <label for="f2" class="">Quantity</label>
+                                                    <div id="valid-for-ItemQuantity"></div>
+                                                </div>
+                                            
+                                            
+                                                @*<div class="md-form md-outline">
+                                                    <select class="form-control">
+                                                        <option>KG</option>
+                                                        <option>Leter</option>
+                                                        <option>pace</option>
+                                                        <option>Gram</option>
+                                                    </select>
+                                                </div>*@
+                                           
+                                            </div>
+                                        <div class="col-md-3">
+                                                                                                                        
+                                            <div class="md-form md-outline" style="margin-top: 0.5rem;">
+                                                <input type="number" name="ItemAmount" id="ItemAmount" class="ExpanseItem form-control">
+                                                <label for="f2" class="">Rate *</label>
+                                                <div id="valid-for-ItemAmount"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn aqua-gradient btn-sm  waves-effect waves-light" style="float: right" id="AddItem"><i class="fas fa-plus"></i>  ADD &nbsp; &nbsp;</button>
+                                        </div>
+                                        
+                                        @*///////*@
+                                        <div class="col-md-12" ><div class="row ExpanseItemBody" ></div></div>
+                                        
+                                        
+                                        
+                                     @*////*@   
+                                        
+                                    </div>
+                                    <hr/>
+                                    <input name="amount" type="hidden" id="amount"/>
+                                    <div  style="float: right;">
+                                        <span style="float: right;">Total: <span id="TotalAmount"></span></span>
+                                    </div>
+                                  <br/>
+                                    <hr/>
+                                    <div style="float: right">
+                                        
+                                        <a class="btn btn-md aqua-gradient"> Save And Print</a>
+                                        <a class="btn btn-md aqua-gradient"> Save Download</a>
+                                        <a class="btn btn-md aqua-gradient"> Save</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
 
             <!-- Footer -->
             <div class="modal-footer">
                 <a type="button" class="btn btn-secondary" data-dismiss="modal"> Cancel</a>
-                <a type="button" class="btn btn-outline-info waves-effect" id="CropAndUploadBtn">Save</a>
             </div>
         </div>
         <!-- Content -->
     </div>
 </div>
 <!-- Central Modal Large Info -->
+
+
 
 

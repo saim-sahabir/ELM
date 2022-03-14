@@ -28,11 +28,10 @@ public class RecentOrgModel
         _organizationServices = _scope.Resolve<IOrganizationServices>();
     }
 
-    public MemberModel memberCount { get; set; }
+   
    public List<SetupOrganaization> OrgList { get; private set; }
    
    
-
    public void GetOrgByOwner(string ownerId)
    {
        

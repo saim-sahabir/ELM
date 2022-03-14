@@ -155,42 +155,45 @@
         
                         <!-- Panel 2 -->
                         <div class="tab-pane fade" id="panel37" role="tabpanel">
-                           <div class="col-md-12">
-                                                             <hr/>
-                                                             <div class="row justify-content-center">
-                                                               
-                                                               <div class="col-md-2 ">
-                                                                 <img src="~/img/no_data.svg" class="img-fluid"/>
+                          <div class="col-md-12">
+                             <a class="btn btn-md aqua-gradient" data-toggle="modal" data-target="#CreateDepositModal" href="#" style="float: right; margin-top: -10px;"><i class="fas fa-money-check-alt"></i> Add new deposit</a>
+                            <h4>Deposits</h4>
+                            <hr/>
+                            <div class="row justify-content-center">
 
-                                                               </div>
-                                                             </div>
-                                                             
-                                                              <div class="pb-5" style="text-align: center;">
-                                                                <h5 class="my-4 dark-grey-text ">No data found</h5><a class="btn pb-3 aqua-gradient" href="#" id="AddDeposit"><i class="fas fa-plus-circle "></i> Add new deposit</a>
-                                                                </div>
-                           </div>
+                              <div class="col-md-2 ">
+                                <img src="~/img/no_data.svg" class="img-fluid"/>
+
+                              </div>
+                            </div>
+
+                            <div class="pb-5" style="text-align: center;">
+                              <h5 class="my-4 dark-grey-text ">No data found</h5><a class="btn pb-3 aqua-gradient" href="#" id="AddDeposit"><i class="fas fa-plus-circle "></i> Add new deposit</a>
+                            </div>
+                          </div>
                         </div>
                         <!-- Panel 2 -->
         
                         <!-- Panel 3 -->
                         <div class="tab-pane fade" id="panel38" role="tabpanel">
                           <div class="col-md-12">
-                                                                                       <hr/>
-                                                                                       <div class="row justify-content-center">
+                           <a class="btn btn-md aqua-gradient" data-toggle="modal" data-target="#CreateExpenseModal" href="#" style="float: right; margin-top: -10px;"><i class="fas fa-money-check-alt"></i> Add new expense</a>
+                                                       <h4>Expenses</h4>                                                            <hr/>
+                            <div class="row justify-content-center">
                                                                                          
-                                                                                         <div class="col-md-2 ">
-                                                                                           <img src="~/img/no_data.svg" class="img-fluid"/>
+                              <div class="col-md-2 ">
+                                <img src="~/img/no_data.svg" class="img-fluid"/>
                                                                                           
-                                                                                         </div>
+                                </div>
                                                                                         
-                                                                                       </div>
+                              </div>
                                                                                        
-                                                                                        <div class="pb-5" style="text-align: center;">
-                                                                                          <h5 class="my-4 dark-grey-text ">No data found</h5>
-                                                                                          <a class="btn pb-3 aqua-gradient" href="#" id="AddExpense"><i class="fas fa-plus-circle "></i> Add new expense</a>
-                                                                                          </div>
+                            <div class="pb-5" style="text-align: center;">
+                              <h5 class="my-4 dark-grey-text ">No data found</h5>
+                              <a class="btn pb-3 aqua-gradient" href="#" data-toggle="modal" data-target="#CreateExpenseModal"><i class="fas fa-plus-circle "></i> Add new expense</a>
+                              </div>
                                                                                        
-                                                                                     </div>
+                            </div>
                         </div>
                         <!-- Panel 3 -->
         
@@ -232,15 +235,6 @@
   
 
 
-
-
-
-<button type="button" class="btn btn-primary mb-3 waves-effect waves-light" data-toggle="modal" data-target="#CreateDepositModal">Deposite
-</button>
-
-<button type="button" class="btn btn-primary mb-3 waves-effect waves-light" data-toggle="modal" data-target="#CreateExpenseModal">Expense
-</button>
-
 <partial name="_CreateDepositeModal"/>
 <partial name="_CreateExpenceModal"/>
 
@@ -252,12 +246,141 @@
 @section Scripts
 {
   <script type="text/javascript" src="~/lib/ELM/js/addons/datatables.min.js"></script>
-  
+
   <script>
    $(function (){
-   
+   ///Init data table
     $('#dtMaterialDesignExample').DataTable();
-   
+    
+    //add expense modal functionality
+      let ItemName = $('#ItemName');
+      let ItemQuantity = $('#ItemQuantity');
+      let ItemAmount = $("#ItemAmount");
+      let ItemCount = 0;
+      let error = 0; 
+      ItemName.val('');
+      ItemAmount.val('');
+     ItemQuantity.val('');
+    
+      $('body').on('click','#AddItem', function(e) {
+             e.preventDefault();
+              CheckValidItem();
+               if (error === 0){
+            AddItemField();
+            console.log(error);
+             }
+       });
+      
+      $('body').on('click','#removeItem', function(e) {
+                   e.preventDefault();
+                   $(this).parent("div.ex1").parent("div.ex").parent("div.ex-item").remove();
+                   ItemCount--
+                  CalculateAll();
+             });
+      
+      
+      
+      
+      function AddItemField() {
+           ItemCount++;
+          var html="";
+          html += "<div class=\"ex-item col-md-12\">";
+          html += "<div class=\"ex row\">";
+          html += "<div class=\"col-md-4\">";
+          html += "  <div class=\"md-form md-outline\" style=\"margin-top: 0.5rem;\">";
+          html += "    <input type=\"text\" value='"+ItemName.val()+"' id=\"itemN"+ItemCount+"\" class=\"form-control\">";
+         
+          html += "  <\/div>";
+          html += "<\/div>";
+          html += "<div class=\"col-md-2\" style=\"\">";
+          html += "  <div class=\"md-form md-outline\" style=\"margin-top: 0.5rem;\">";
+          html += "    <input type=\"number\" name =\"\" value='"+ItemQuantity.val()+"' id=\"itemQ"+ItemCount+"\" class=\"form-control\">";
+         
+          html += "  <\/div>";
+          html += "<\/div>";
+          html += "<div class=\"col-md-3\">";
+          html += "  <div class=\"md-form md-outline\" style=\"margin-top: 0.5rem;\">";
+          html += "    <input type=\"number\" id=\"itemPrice"+ItemCount+"\" value='"+ItemAmount.val()+"'  class=\"rate form-control\">";
+          
+          html += "  <\/div>";
+          html += "<\/div>";
+          html += "<div class=\"ex1 col-md-3\">";
+          html += "  <button class=\"btn btn-danger btn-sm  waves-effect waves-light\" id=\"removeItem\" style=\"float: right\"><i class=\"fas fa-trash\"><\/i> Trash<\/button>";
+          html += "<\/div>";
+          html += "<\/div>";
+          html += "<\/div>";
+           $('.ExpanseItemBody').attr("data-id", ItemCount);
+           $(".ExpanseItemBody").append(html);
+           
+           
+           ItemName.val('');
+           ItemAmount.val('');
+           ItemQuantity.val('');
+          
+           CalculateAll();
+           
+      }
+      
+      let totalAmount = 0;
+      function CalculateAll() {
+
+        $('.ExpanseItemBody').each(function() {
+            let id = $(this).attr("data-id");
+            let amount = $('#itemPrice'+id+'').val();
+            if($.trim(amount) === "" || $.isNumeric(amount) === false){
+                            amount = 0;
+               }
+            
+            totalAmount += parseFloat($.trim(amount));
+            if (isNaN(totalAmount)) {
+                totalAmount = 0;
+              }
+        });
+        $('#TotalAmount').text(totalAmount);
+        $('#amount').val(totalAmount);
+        
+        
+      }
+     
+      
+     function CheckValidItem(){
+         
+       
+       if (ItemName.val() === ""){
+         
+       let  validItemName  = $("#valid-for-ItemName");
+            validItemName.html(' <span id="valid-for-ItemName" class="text-danger" style="font-size: 15px;"> Item Name Is Required</span>');
+          error = 1;
+           
+         }
+       if (ItemQuantity.val() ===  ""){
+           let validItemQuantity  = $("#valid-for-ItemQuantity");
+            validItemQuantity.html(' <span id="valid-for-ItemName" class="text-danger" style="font-size: 15px;">Quantity Is Required</span>');
+           error =1;
+            
+         }
+       if (ItemAmount.val() === ""){
+          let validItemAmount =  $("#valid-for-ItemAmount");
+              validItemAmount.html(' <span id="valid-for-ItemName" class="text-danger" style="font-size: 15px;"> Item Name Is Required</span>');
+          error = 1;
+       }
+       
+       }
+       
+       $('body').on('keyup', '.ExpanseItem', function(e) {
+               e.preventDefault();
+               let  validItemName  = $("#valid-for-ItemName");
+                    validItemName.html('');
+               let validItemQuantity  = $("#valid-for-ItemQuantity");
+                  validItemQuantity.html('');
+                 
+                let validItemAmount =  $("#valid-for-ItemAmount");
+                   validItemAmount.html('');
+                   error = 0;
+             });
+      $('body').on('keyup', '.rate', function() {
+        CalculateAll();
+      });
    
    });
 
