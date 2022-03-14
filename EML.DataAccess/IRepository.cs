@@ -30,6 +30,8 @@ public interface IRepository<TEntity, TKey>
      IList<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
          Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
          string includeProperties = "", bool isTrackingOff = false);
+
+   
      
      IList<TEntity> GetDynamic(Expression<Func<TEntity, bool>> filter = null,
          string orderBy = null, 

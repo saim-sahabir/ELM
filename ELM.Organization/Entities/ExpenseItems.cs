@@ -8,6 +8,6 @@ public class ExpenseItems: IEntity<int>
     public string? Name { get; set; }
     public string? Quantity { get; set; }
     public decimal Amount { get; set; }
-  
+    public int ExpensesId { get; set; }
     public Expenses Expenses { get; set; }
 }

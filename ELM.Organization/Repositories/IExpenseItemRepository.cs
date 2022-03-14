@@ -3,7 +3,7 @@ using EML.DataAccess;
 
 namespace ELM.Organization.Repositories;
 
-public interface IExpenseRepository : IRepository<Expenses, int>
+public interface IExpenseItemRepository : IRepository<ExpenseItems, int>
 {
     
 }

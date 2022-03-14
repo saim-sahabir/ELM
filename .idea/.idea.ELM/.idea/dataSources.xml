@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:sqlserver://localhost</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="db_a8431a_elmdbsql@SQL5107.site4now.net" uuid="540d3274-4252-48f1-a9fe-9c698b4ab395">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://SQL5107.site4now.net:1433;database=db_a8431a_elmdbsql</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

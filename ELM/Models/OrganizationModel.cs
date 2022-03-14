@@ -50,7 +50,8 @@ public class OrganizationModel
     public string? Status { get; set; }
     public DateTime DateTime { get; set; }
     public bool IsActive { get; set; }
-
+    
+    public  ExpenseModel? ExpenseModel { get; set; }
     public List<MemberModel>? MemberInfo { get; set; }
 
     public void GetMemberByOrg(int id)

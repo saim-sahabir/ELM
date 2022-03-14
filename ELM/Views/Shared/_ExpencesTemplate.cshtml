@@ -1,0 +1,265 @@
+@model ExpensesViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <style>
+            body{
+                width:100%;
+                margin: 0;
+                padding: 0;
+                color:#000;
+                font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size:14px;
+                background-color: #fff;
+
+            }
+            #main{
+                width: 860px;
+                margin:0 auto;
+                /*border:1px solid #ccc;*/
+                padding:10px;
+            }
+            .section{
+                padding:10px;
+                /*border-bottom:1px solid #ccc;*/
+                margin-bottom:15px;
+                padding-bottom:15px;
+            }
+            .clear{
+                clear:both;
+            }
+            p{
+                margin:0px;
+            }
+            .inner-invoice{
+                margin:20px;
+                border:1px solid #ccc;
+                padding:20px;
+            }
+            table{
+                border-color:#ccc;
+                border: none;
+                border-spacing: unset;
+                border-collapse: collapse;
+            }
+            td,th{
+                padding:5px;
+
+
+            }
+            .table tbody tr td,table thead tr th{
+                border:none;
+                border-right:1px solid #fff;
+
+            }
+            .table tbody tr td{
+                background-color: #f5f5f5;
+                border-right:1px solid #fff;
+                border-bottom:1px solid #fff;
+                padding:4px;
+                font-size:13px;   
+
+            }
+            table thead tr th{
+                background-color: #00b0ff;
+                padding:10px 4px;
+                text-align: center;
+                color:white;
+                border-color:#fff;
+            }
+            table thead tr th{
+                text-align: left;
+            }
+            table thead tr td{
+                text-align: left;
+                font-size: 13px;
+                padding:5px;
+
+            }
+
+            .segment{
+                width:46%;
+            }
+            .heading{
+                padding: 10px 0px;
+            } 
+            .invoice-details{
+                width:300px;
+            }
+            .invoice-details b:first-child{
+                width:150px;
+                margin-right:10px;
+                display: inline-block;
+            }
+            .classtext{
+                color:white;
+            }
+            .classbg{
+                background-color: #00b0ff;
+            }
+            .classtexts{
+                color: white;
+            }
+            .left{
+                float:left;
+            }
+            .right{
+                float:right;
+            }
+
+            .logoarea img{
+                width: 140px;
+                height: 75px;
+
+            }
+            .section h3{
+                background-color: #00b0ff;
+                padding:10px 5px;
+                color:white;
+                margin-bottom: 3px;
+            }
+            .standard p{
+                margin: 3px;
+                color:white;
+
+            }
+            .standard h2,.standard h3{
+                margin:3px;
+                color:white;
+                text-indent: 10px;
+            }
+            .table thead > tr > th {
+                vertical-align: bottom;
+                border-right:1px solid #fff;
+                border-bottom:1px solid #fff; 
+            }
+            .table thead > tr > td {
+                vertical-align: bottom;
+                border-right:1px solid #fff;
+                border-bottom:1px solid #fff; 
+            }
+
+        </style>
+</head>
+<body>
+    <div id="main">
+        <div class="section head-section standard" style="background-color:#00b0ff;">
+            <!--   segment left-->
+            <div class="segment left">
+                
+                <p style="margin: 3px 0px;">
+                    @if (Model.OrgLogo != null)
+                    {<img src="@Url.Content("~/upload/")@Model.OrgLogo" class="logo" style="width: 60px;"/>}
+                    else
+                    {<img src="@Url.Content("~/img/")org.png" class="logo" style="width: 60px;"/>}
+                </p>
+                <p style="margin: 3px 0px;">Expanse Number:
+                #E45F0 @Model.Id
+                <p style="margin: 3px 0px;">Expanse Date:
+                @Model.Date
+
+            </div>
+            <div class="segment logoarea right" style="text-align: right;padding: 10px">
+                <h2 style="padding:0px;margin:5px 0px;text-indent:0px;"> @Model.OrgName</h2>
+                <p> @Model.OrgAddress</p>
+                <p>Phone: @Model.OrgPhone</p>
+                <p>Email: @Model.OrgEmail</p>
+
+            </div>
+            <!--        segment right-->
+            <div style="clear: both"></div>
+
+        </div>
+
+        <div class="section head-section " style="padding:0px 0px 4px 0px;margin:0px;">
+            <div class="left" style="width: 46%;overflow: hidden;">
+                <h3  style="margin-top: 0px;">Expense By:</h3>
+                <p class="heading" style="line-height: 18px;padding-bottom: 0px;padding-left: 0px;margin: 3px 0px;"> 
+                <p style="padding-left: 0px;margin: 3px 0px;">Person Name: @Model.ExpensePerson</p>
+                <p style="padding-left: 0px;margin: 3px 0px;">Email: @Model.ExpensePersonEmail</p>
+                    @*<b><?php echo $customer_info->name; ?></b></p>
+               
+                <p style="padding-left: 0px;margin: 3px 0px;">Contact Person: <?php echo $customer_info->c_person; ?></p>
+                <p style="padding-left: 0px;margin: 3px 0px;">Phone: <?php echo $customer_info->phone; ?></p>
+                <p style="padding-left: 0px;margin: 3px 0px;">Email: <?php echo $customer_info->email; ?>*@
+            </div>
+            <div class="left" style="width: 8%;overflow: hidden;">
+                <p>&nbsp;</p>
+            </div>
+            <!--        segment left-->
+            <div class="right" style="width: 46%;overflow: hidden;margin-right: 0px" margin-bottom: 20px;>
+                <h3  style="margin-top: 0px;">Expenses Information:</h3>
+                <p style="padding: 10px 0px 0px;margin: 3px 0px;line-height: 18px;">
+                    Expense Name: @Model.ExpenseName</p>
+                <p style="padding-left: 0px;margin: 3px 0px;">
+                     Date: @Model.Date</p>
+
+            </div>
+        </div>
+        <!-- .section. -->
+       
+        <br>
+        <br/>
+          <table class="table" style="width: 100%;">
+        
+                      <!-- Table head -->
+                      <thead>
+                        <tr>
+                          <th style="width:10%;text-align: center;">SN</th>
+                            <th style="width:42%;">Product/Service</th>
+                            <th style="width:18%;text-align: center;">Quantity</th>
+                            <th style="width:25%;text-align: right;">Amount</th>
+                        </tr>
+                      </thead>
+                      <!-- Table head -->
+        
+                      <!-- Table body -->
+                      <tbody>
+                     
+                      
+                                      @if (Model.ExpenseItem.Count != 0)
+                                      {
+                                          var i = 0;
+                                          foreach (var item in Model.ExpenseItem)
+                                          {
+                                              i++;
+                                            <tr>
+                                                 <td style="text-align: center;">@i</td>
+                                                  <td>@item.Name</td> 
+                                                  <td  style="text-align: center;">@item.Quantity</td>
+                                                  <td  style="text-align: right;">@item.Amount</td>
+                                                 
+                                             </tr>
+                                          }
+                      
+                                      }
+                      
+                     
+                         
+                      <tr>
+                          <td colspan="4" style="border-right: 1px solid #fff; border-bottom:none;text-align: right;"><b>Total: </b>  @Model.Amount</td>
+                      </tr>
+                      
+                      </tbody>
+                      <!-- Table body -->
+                    </table>
+        <!-- .section. -->
+           @if (Model.Description != null)
+           {
+               <div class="section head-section " style="padding:0px 0px 15px 0px;margin:0px 0px 15px 0px;">
+                               <h3 class="classtext">Descriptions:</h3>
+                               <p style="margin-left:10px;">@Model.Description</p>
+                           </div>
+               
+           }
+            
+       
+        <!-- .section -->
+    </div>
+    <!-- #main -->
+
+</body>
+</html>

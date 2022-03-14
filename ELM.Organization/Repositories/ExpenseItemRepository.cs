@@ -4,13 +4,11 @@ using EML.DataAccess;
 
 namespace ELM.Organization.Repositories;
 
-public class ExpenseRepository : Repository<Expenses, int>, IExpenseRepository
+public class ExpenseItemRepository : Repository<ExpenseItems, int>, IExpenseItemRepository
 {
     private readonly IOrganizationDbContext _context;
-    public ExpenseRepository(IOrganizationDbContext context) : base((Microsoft.EntityFrameworkCore.DbContext)context)
+    public ExpenseItemRepository(IOrganizationDbContext context) : base((Microsoft.EntityFrameworkCore.DbContext)context)
     {
         _context = context;
     }
-    
-    
 }

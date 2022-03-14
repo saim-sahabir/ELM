@@ -30,6 +30,8 @@ public class WebModule :Module
          builder.RegisterType<ProfileEditModel>().AsSelf();
          builder.RegisterType<RecentOrgModel>().AsSelf();
          builder.RegisterType<MemberModel>().AsSelf();
+         builder.RegisterType<ExpenseItemModel>().AsSelf();
+         builder.RegisterType<ExpensesViewModel>().AsSelf();
          
          // builder.RegisterType<WebUserDbContext>().AsSelf()
          //            .WithParameter("connectionString", _connectionString)

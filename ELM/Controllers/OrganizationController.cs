@@ -27,10 +27,13 @@ public class OrganizationController : Controller
     
     public IActionResult Index(string id)
     { 
-        var model = _scope.Resolve<OrganizationModel>();
-        var memberModel = _scope.Resolve<MemberModel>();
+       
         if (id != null)
         {
+            var model = _scope.Resolve<OrganizationModel>();
+            model.Id = int.Parse(id);
+            var memberModel = _scope.Resolve<MemberModel>();
+            
             memberModel.GetMemberByOrg(int.Parse(id));
             var memberList = new List<MemberModel>();
             foreach (var item in memberModel.Members)
@@ -59,7 +62,7 @@ public class OrganizationController : Controller
             }
             return View(model);
         }
-
+          
         return RedirectToAction("Index", "Home", new { area = "" });
     }
     

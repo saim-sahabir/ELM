@@ -25,6 +25,7 @@ public class HomeController : Controller
 
 
     }
+    
 [AllowAnonymous]
     public IActionResult Index()
     {
@@ -40,12 +41,7 @@ public class HomeController : Controller
         return View();
     }
     
-     public IActionResult Add()
-     {
-         var model = _scope.Resolve<ExpenseModel>();
-        model.CreateExpense("bill" , 2000);
-        return Content("Add Succeuss");
-     }
+   
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

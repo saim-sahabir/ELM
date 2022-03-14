@@ -36,6 +36,11 @@ public class OrganizationModule : Module
          builder.RegisterType<OrganizationService>().As<IOrganizationServices>()
             .InstancePerLifetimeScope();
          
+         builder.RegisterType<ExpanseService>().As<IExpanseService>()
+             .InstancePerLifetimeScope();
+         builder.RegisterType<ExpenseRepository>().As<IExpenseRepository>()
+             .InstancePerLifetimeScope();
+         
          builder.RegisterType<OrgMemberRepository>().As<IOrgMemberRepository>()
              .InstancePerLifetimeScope();
          
@@ -43,6 +48,9 @@ public class OrganizationModule : Module
              .InstancePerLifetimeScope();
          
          builder.RegisterType<OrgMemberServices>().As<IOrgMemberServices>()
+             .InstancePerLifetimeScope();
+         
+         builder.RegisterType<ExpenseItemRepository>().As<IExpenseItemRepository>()
              .InstancePerLifetimeScope();
         
         base.Load(builder);

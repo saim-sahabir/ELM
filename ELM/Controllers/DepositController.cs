@@ -1,4 +1,5 @@
 using Autofac;
+using ELM.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ELM.Controllers;
@@ -19,9 +20,15 @@ public class DepositController : Controller
         return View();
     }
 
-    public IActionResult Create()
+    public IActionResult Create(DepositModel model)
+    
     {
-        return View();
+        if (ModelState.IsValid)
+        {
+            
+        }
+        
+        return PartialView("_CreateDepositeModal", model);
     }
 }
 
