@@ -117,7 +117,7 @@ try {
     var app = builder.Build();
     Log.Information("Application Starting Up");
 // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
+    if (!app.Environment.IsDevelopment())
     {
         app.UseMigrationsEndPoint();
     }
